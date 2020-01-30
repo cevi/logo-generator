@@ -1,0 +1,14 @@
+/*!-----------------------------------------------------------------------------
+   Master Stylesheet.
+
+   Project:       {{ name }}
+   Version:       {{ version }}
+   Contributors:  {{ author }}
+   URL:           {{ url }}
+   License:       {{ license }}
+   -------------------------------------------------------------------------- */
+
+@import "src/sass/meta";
+@import "src/sass/shared";
+@import "src/sass/components";
+@import "src/sass/exceptions";

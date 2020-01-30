@@ -1,0 +1,62 @@
+/*
+---
+name: Header Bar
+tag:
+  - components
+  - header
+  - header-bar
+category:
+  - components
+  - components/header-bar
+sourcePath: /components/_header-bar.scss
+---
+
+*/
+.header-bar {
+    position: fixed;
+    height: $base-header-height;
+    background: $color-primary;
+    width: 100vw;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    > .logowrapper {
+        flex-grow: 100;
+        margin-right: 25px;
+        margin-left: 10px;
+        max-height: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        > .logo {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            > .image {
+                display: none;
+                max-height: 40px;
+                max-width: 100%;
+                height: auto;
+                width: auto;
+
+                &.-short {
+                    display: block;
+                }
+
+                @include media('>=large') {
+                    display: block;
+
+                    &.-short {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,59 @@
+/*
+---
+name: Link
+tag:
+  - link
+category:
+  - shared
+  - shared/link
+sourcePath: /shared/_link.scss
+---
+
+```html
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+At vero eos et accusam et <a href="#">lorem</a> rebum. Stet clita kasd gubergren,
+no sea takimata sanctus um.
+```
+*/
+
+p a { // stylelint-disable-line rscss/no-descendant-combinator
+    padding-left: 22px;
+    position: relative;
+
+    &::before {
+        @include fa-icon;
+
+        content: '\f0c1'; // Font Awesome-icon link
+        position: absolute;
+        left: 2px;
+        top: 1px;
+    }
+
+    &.-obfuscated {
+        &::before {
+            content: '\f003'; // Font Awesome-icon envelope-o
+        }
+    }
+
+    &.-phone {
+        &::before {
+            content: '\f095'; // Font Awesome-icon phone
+            left: 5px;
+        }
+    }
+
+    &,
+    &:link,
+    &:visited {
+        color: $color-secondary;
+        text-decoration: none;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: $color-primary;
+        text-decoration: none;
+    }
+}

@@ -1,0 +1,37 @@
+$breakpoints: (
+    small: 320px,
+    medium: 768px,
+    large: 1024px,
+    huge: 1440px
+) !default;
+
+// @see https://github.com/eduardoboucas/include-media/issues/14
+$unit-intervals: ("px": 1, "em": 0.065, "rem": 0.0625) !default;
+
+/*
+---
+name: Breakpoints
+tag:
+  - meta
+category:
+  - meta
+  - meta/breakpoints
+sourcePath: /meta/_breakpoints.scss
+---
+
+Resolution relative settings. Excerpt from Google web fundamentals:<sup>[1]</sup>
+
+- Create breakpoints based on content, *never* on specific devices, products,
+  or brands.
+- Design for the smallest mobile device first, then progressively enhance
+  the experience as more screen real estate becomes available.
+- Keep lines of text to a maximum of around 70 or 80 characters.
+
+Currently defined breakpoints:
+
+```yaml
+#{stringify($breakpoints, (separator: "\a"))}
+```
+
+[1]: https://developers.google.com/web/fundamentals/design-and-ui/responsive/#how-to-choose-breakpoints
+*/

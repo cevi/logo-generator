@@ -1,0 +1,88 @@
+/*
+---
+name: Print
+category: print
+sourcePath: /shared/_print.scss
+---
+
+By default the global print styles from the [HTML5 Boilerplate] are included.
+Only adjust the global `_print.scss` styles if you *really* have to do it and
+know what you’re doing.
+
+⚠️ Otherwise *always* place print styles into their belonging component.
+
+```scss
+.my-component {
+    // Styles…
+
+    @include media("print") {
+        // Adjustments …
+    }
+}
+```
+
+[HTML5 Boilerplate]: https://github.com/msikma/h5bp-print-styles
+*/
+@media print {
+    *,
+    *::before,
+    *::after,
+    *::first-letter,
+    *::first-line {
+        background-color: transparent !important;
+        color: #000 !important; // Black prints faster: http://www.sanbeiji.com/archives/953
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]::after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]::after {
+        content: " (" attr(title) ")";
+    }
+
+    a[href^="#"]::after, // Don't show links that are fragment identifiers,
+    a[href^="javascript:"]::after { // or use the `javascript:` pseudo protocol
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    // Printing Tables:
+    // http://css-discuss.incutio.com/wiki/Printing_Tables
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

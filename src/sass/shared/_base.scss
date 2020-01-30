@@ -1,0 +1,42 @@
+// -----------------------------------------------------------------------------
+// Base styles.
+// -----------------------------------------------------------------------------
+:root {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+a {
+    color: currentColor;
+    display: inline-block;
+    text-decoration-skip: ink;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.main-content {
+    padding-top: $base-header-height;
+
+    &.-showmenu {
+        padding-left: $page-padding;
+        padding-right: $page-padding;
+        padding-top: $base-header-height + $page-padding;
+        width: 100%;
+
+        @include media('>=large') {
+            width: 80%;
+            padding-left: calc((100% / 3) + #{$page-padding + 6px});
+        }
+    }
+
+    &.-raw {
+        padding-top: 0;
+    }
+}

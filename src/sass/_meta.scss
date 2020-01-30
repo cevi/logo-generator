@@ -1,0 +1,31 @@
+/*
+---
+name: Meta
+category: meta
+sourcePath:
+---
+
+The meta folder/category holds files which only have functions, mixins,
+variables and other definitions which do *not* compile to CSS.
+*/
+// @see https://necolas.github.io/normalize.css/
+@import "node_modules/normalize.css/normalize";
+
+// The meta-files
+// -----------------------------------------------------------------------------
+@import "src/sass/meta/functions";
+@import "src/sass/meta/base";
+@import "src/sass/meta/breakpoints";
+@import "src/sass/meta/colors";
+@import "src/sass/meta/z";
+
+// @see http://include-media.com/
+@import "node_modules/include-media/dist/include-media";
+
+// @see http://fontawesome.io/
+@import 'node_modules/font-awesome/scss/font-awesome.scss';
+
+// The meta-files with dependencies to the ones above.
+// -----------------------------------------------------------------------------
+@import "src/sass/meta/mixins";
+@import "src/sass/meta/placeholders";

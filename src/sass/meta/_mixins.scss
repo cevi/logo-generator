@@ -1,0 +1,16 @@
+// -----------------------------------------------------------------------------
+// Define your global mixins in here!
+// -----------------------------------------------------------------------------
+@mixin headline() {
+    font-family: $base-headline-family;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+@mixin paragraph() {
+    font-family: $base-font-family;
+    text-transform: none;
+    font-weight: 400;
+    letter-spacing: 0;
+}

@@ -1,0 +1,7 @@
+# Frontend
+node_modules
+assets
+
+# system
+.idea
+.DS_Store

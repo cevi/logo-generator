@@ -1,0 +1,267 @@
+/*
+---
+name: Color box
+tag:
+  - components
+  - color
+  - box
+category:
+  - components
+  - components/color
+sourcePath: /components/_color-box.scss
+---
+
+More examples on this <a href="https://codepen.io/btemperli/pen/EQwLYG" target="_blank">codepen-snippet</a>.
+
+```html
+<div class="color-box -leftarrow">
+  <div class="left">Left side is red.<br>-leftarrow</div>
+  <div class="right">Right side is blue.</div>
+</div>
+
+<div class="color-box -switchsize -rightarrow">
+  <div class="left">Left side is red.<br>-switchsize<br>-rightarrow</div>
+  <div class="right">Right side is blue.</div>
+</div>
+
+<div class="color-box -switchcolor -leftarrow">
+  <div class="left">Left side is blue.<br>-switchcolor<br>-leftarrow</div>
+  <div class="right">Right side is red.</div>
+</div>
+
+<div class="color-box -switchcolor -switchsize -leftarrow">
+  <div class="left">Left side is blue.<br>-switchcolor<br>-switchsize<br>-leftarrow</div>
+  <div class="right">Right side is red.</div>
+</div>
+
+<div class="color-box -switchcolor -switchsize -leftarrow">
+  <div class="left -image" style="background-image: url('http://via.placeholder.com/600x600/22cc99/7700dd')">Left side is an image.<br>-switchcolor<br>-switchsize<br>-rightarrow</div>
+  <div class="right">Right side is red.</div>
+</div>
+```
+
+*/
+
+$line-width: $cevi-line-size / 2;
+$triangle-big-width: 6.4; // 32/5
+$triangle-big-height: 4.32; // 21.6/5
+$triangle-small-width: 4.74; // 23.7/5
+$triangle-small-height: 3.2; // 16/5
+$background-size: auto 125vh;
+
+.color-box {
+    padding: 0;
+    margin: $cevi-line-size / 2 0;
+    height: 280px;
+
+    > .right,
+    > .left {
+        position: relative;
+        color: $color-background;
+        padding: $line-width;
+        height: 100%;
+        float: left;
+
+        a { // stylelint-disable-line rscss/no-descendant-combinator
+            color: $color-background;
+
+            &:hover {
+                color: $color-background-hover;
+            }
+        }
+
+        &.-image {
+            background-color: unset;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            background-size: cover;
+        }
+
+        &::after {
+            position: absolute;
+            content: '';
+            height: 0;
+            width: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    > .left {
+        background-color: $color-primary;
+        width: calc(100% / 3);
+        padding-right: $line-width * 2;
+    }
+
+    > .right {
+        background-color: $color-active;
+        width: calc(100% / 3 * 2);
+
+        &::before {
+            position: absolute;
+            content: '';
+            height: 100%;
+            width: $line-width;
+            background-color: $color-background;
+            left: - $line-width;
+            top: 0;
+        }
+    }
+
+    &.-switchsize {
+        > .left {
+            width: calc(100% / 3 * 2);
+        }
+
+        > .right {
+            width: calc(100% / 3);
+        }
+    }
+
+    &.-leftarrow {
+        // White big triangle
+        > .right::after {
+            border-right: ($line-width * $triangle-big-width) solid $color-background;
+            border-top: ($line-width * $triangle-big-height) solid transparent;
+            border-bottom: ($line-width * $triangle-big-height) solid transparent;
+            left: ($line-width * $triangle-big-width * -1);
+            z-index: 1;
+        }
+
+        // Blue smaller triangle
+        > .left::after {
+            border-right: ($line-width * $triangle-small-width) solid $color-active;
+            border-top: ($line-width * $triangle-small-height) solid transparent;
+            border-bottom: ($line-width * $triangle-small-height) solid transparent;
+            right: 0;
+            z-index: 2;
+        }
+    }
+
+    &.-rightarrow {
+        // Blue small triangle
+        > .right::after {
+            border-left: ($line-width * $triangle-small-width) solid $color-primary;
+            border-top: ($line-width * $triangle-small-height) solid transparent;
+            border-bottom: ($line-width * $triangle-small-height) solid transparent;
+            left: $line-width * -1;
+            z-index: 2;
+        }
+
+        // White bigger triangle
+        > .left::after {
+            border-right: none;
+            border-left: ($line-width * $triangle-big-width) solid $color-background;
+            border-top: ($line-width * $triangle-big-height) solid transparent;
+            border-bottom: ($line-width * $triangle-big-height) solid transparent;
+            right: ($line-width * $triangle-big-width * -1) + $line-width;
+            z-index: 1;
+        }
+    }
+
+    &.-changecolor {
+        > .left,
+        > .right {
+            transition: background-color $base-transition-speed linear;
+
+            &::after {
+                transition: border-left-color $base-transition-speed linear, border-right-color $base-transition-speed linear;
+            }
+        }
+
+        &:hover {
+            > .left {
+                background-color: $color-active;
+            }
+
+            > .right {
+                background-color: $color-primary;
+            }
+        }
+    }
+
+    // stylelint-disable no-descending-specificity
+    &.-switchcolor {
+        > .left {
+            background-color: $color-active;
+        }
+
+        > .right {
+            background-color: $color-primary;
+        }
+
+        &.-leftarrow {
+            > .left::after {
+                border-right-color: $color-primary;
+            }
+        }
+
+        &.-rightarrow {
+            > .right::after {
+                border-left-color: $color-active;
+            }
+        }
+
+        &.-changecolor:hover {
+            > .left {
+                background-color: $color-primary;
+            }
+
+            &.-leftarrow {
+                > .left::after {
+                    border-right-color: $color-active;
+                }
+            }
+
+            > .right {
+                background-color: $color-active;
+
+                &::after {
+                    border-left-color: $color-primary;
+                }
+            }
+
+            &.-rightarrow {
+                > .right::after {
+                    border-left-color: $color-primary;
+                }
+            }
+        }
+    }
+
+    &.-slider {
+        height: calc(100vh - #{$base-header-height});
+        padding: $line-width 0;
+
+        > .right,
+        > .left {
+            background-color: $color-active;
+
+            &.-image {
+                background-size: $background-size;
+            }
+        }
+
+        > .right {
+            &.-image {
+                background-position: 0 50%;
+            }
+        }
+
+        > .left {
+            &.-image {
+                background-position: (100% / 3 * 2) 50%;
+            }
+
+            > .leftarrowimage {
+                width: $line-width * $triangle-small-width;
+                height: $line-width * $triangle-small-height * 2;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: - ($line-width * $triangle-small-width) + $line-width;
+                z-index: 3;
+            }
+        }
+    }
+}

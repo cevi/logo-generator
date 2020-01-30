@@ -1,0 +1,115 @@
+/*
+---
+name: Logo Generator
+---
+*/
+.logo-generator {
+    padding: $base-header-height + $page-padding $page-padding $page-padding;
+
+    &.-iframe {
+        padding-top: $page-padding;
+    }
+
+    > h1 > small {
+        font-size: 18px;
+    }
+
+    > .userinputform {
+        padding: $page-padding 0;
+
+        > .userinputs {
+            display: flex;
+            flex-direction: row;
+
+            > .inputwrapper {
+                max-width: 45ch;
+                margin-right: $base-vertical-margin;
+            }
+
+            @include media('<1000px') {
+                flex-wrap: wrap;
+
+                > .inputwrapper {
+                    min-width: 180px;
+                }
+            }
+        }
+    }
+
+    > .generatoroutput {
+        margin: $base-horizontal-margin $base-vertical-margin $base-horizontal-margin 0;
+        display: inline-block;
+        height: 178px;
+        font-family: $base-headline-family;
+        font-weight: 800;
+        float: left;
+
+        > img {
+            max-height: 80px;
+            display: block;
+            background-color: #333;
+            border: 1px solid $color-active;
+        }
+
+        > .info {
+            margin: 10px;
+            width: 100%;
+        }
+
+        > .linkwrapper > .link {
+            font-size: 20px;
+            text-decoration: none;
+            color: white;
+            background-color: $color-active;
+            display: block;
+            height: 40px;
+            width: 40px;
+            padding: 8px 14px;
+            margin-top: 5px;
+        }
+
+        > .svgwrapper {
+            height: 80px;
+            background: #333;
+
+            > svg {
+                height: 100%;
+                width: auto;
+                border: 1px solid $color-active;
+            }
+        }
+
+        > .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        &.-claim {
+            height: 258px;
+
+            > img {
+                max-height: 160px;
+            }
+
+            > .svgwrapper {
+                height: 160px;
+            }
+        }
+    }
+
+    > .testwrapper > .testoutput {
+        font-family: $base-headline-family;
+        font-weight: 800;
+        font-size: 110px;
+        color: $color-background;
+        white-space: nowrap;
+    }
+
+    > .hidden {
+        visibility: hidden;
+        position: absolute;
+        z-index: -100;
+        top: 0;
+    }
+}

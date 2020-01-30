@@ -1,0 +1,16 @@
+/*
+---
+name: Components
+category: components
+sourcePath:
+---
+
+Components ideally are pieces of CSS that are independent, detached,
+context unaware and as tiny as possible. A component may also be a composition
+of other components.
+*/
+@import "src/sass/components/color-box";
+@import "src/sass/components/form-wrapper";
+@import "src/sass/components/header-bar";
+@import "src/sass/components/ie-blocker";
+@import "src/sass/components/logo-generator";

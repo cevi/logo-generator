@@ -1,0 +1,11 @@
+{
+    "extends": [
+        "stylelint-config-standard",
+        "stylelint-rscss/config"
+    ],
+    "rules": {
+        "comment-whitespace-inside": null,
+        "indentation": [4, {}],
+        "at-rule-no-unknown": null
+    }
+}

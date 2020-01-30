@@ -1,0 +1,59 @@
+$color-emerald: #28c76f;
+$color-carnation: #ea5455;
+$color-dodger-blue: #0396ff;
+$color-candlelight: #f8d800;
+
+$color-crimson: #c41333;
+$color-chambray: #333791;
+$color-black: #000;
+$color-white: #fff;
+$color-gallery: #ebebeb;
+$color-masala: #474645;
+$color-silver-chalice: #aeaeae;
+
+$color-foreground: $color-black;
+$color-background: $color-white;
+$color-background-hover: $color-gallery;
+$color-background-hover-transparent: rgba($color-background-hover, 0.8);
+$color-background-hover-transparent-mobile: rgba($color-background-hover, 0.975);
+$color-secondary: $color-masala;
+$color-secondary-light: $color-silver-chalice;
+$color-secondary-contrast: $color-white;
+$color-primary: $color-crimson;
+$color-primary-contrast: $color-white;
+$color-primary-background: rgba($color-crimson, 0.25);
+$color-active: $color-chambray;
+$color-active-contrast: $color-white;
+$color-active-background: rgba($color-chambray, 0.25);
+
+/*
+---
+name: Colors
+tag:
+  - meta
+  - colors
+category:
+  - meta
+  - meta/colors
+template: colors
+sourcePath: /meta/_colors.scss
+colors:
+  black: "#{$color-black}"
+  white: "#{$color-white}"
+  crimson: "#{$color-crimson}"
+  chambray: "#{$color-chambray}"
+---
+
+The following colors are the defined project colors.
+
+📢 Remember:
+
+- Do *not* create new ones, try to use them and *adjust* them via color
+manipulating functions.<sup>[1]</sup><sup>[2]</sup> This will be useful regarding theming.
+- *Always* use colors [names](http://chir.ag/projects/name-that-color) wherever you can.<sup>[3]</sup>
+
+[1]: https://robots.thoughtbot.com/controlling-color-with-sass-color-functions
+[2]: http://jackiebalzer.com/color
+[3]: https://davidwalsh.name/sass-color-variables-dont-suck
+
+*/

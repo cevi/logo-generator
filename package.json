@@ -1,0 +1,84 @@
+{
+  "name": "cevi-logo",
+  "version": "1.0.0",
+  "description": "Logo Generator for Cevi Schweiz",
+  "main": "js/App.js",
+  "scripts": {
+    "build": "npm run clean && npm run lint && npm run sass && npm run js && npm run copy",
+    "clean": "rm -rf assets",
+    "copy": "node npm_run/copy.js",
+    "js": "browserify src/js/App.js -o assets/js/scripts.js",
+    "js-lint": "eslint src/js",
+    "js-watch": "watchify ./src/js/App.js -o ./assets/css/scripts.js --verbose",
+    "lint": "npm run sass-lint && npm run js-lint",
+    "sass-watch": "node-sass --watch src/sass -o assets/css",
+    "sass": "node-sass src/sass -o assets/css",
+    "sass-lint": "stylelint src/sass",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npm run js-watch sass-watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cevi/logo-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cevi/logo-generator/issues"
+  },
+  "homepage": "https://github.com/cevi/logo-generator#readme",
+  "dependencies": {
+    "canvg": "^1.5.3",
+    "font-awesome": "^4.7.0",
+    "include-media": "^1.4.9",
+    "jquery": "^3.4.1",
+    "mq-scss": "^2.1.5",
+    "normalize.css": "^7.0.0",
+    "text-to-svg": "^3.1.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "babelify": "^10.0.0",
+    "browserify": "^16.5.0",
+    "browserify-ejs-tran": "^1.0.1",
+    "browserify-shim": "^3.8.14",
+    "copy": "^0.3.2",
+    "deamdify": "^0.3.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "node-sass": "^4.12.0",
+    "stylelint": "^13.0.0",
+    "stylelint-config-standard": "^19.0.0",
+    "stylelint-rscss": "^0.4.0",
+    "watchify": "^3.11.1"
+  },
+  "browser": {
+    "fs": "./node_modules/browserify-fs/index.js"
+  },
+  "browserify-shim": {},
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            [
+              "@babel/preset-env",
+              {
+                "debug": true
+              }
+            ]
+          ]
+        }
+      ],
+      "browserify-ejs-tran",
+      "browserify-shim",
+      "deamdify"
+    ]
+  }
+}

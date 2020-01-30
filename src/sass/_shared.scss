@@ -1,0 +1,21 @@
+/*
+---
+name: Shared
+category: shared
+sourcePath:
+---
+
+Before creating components you most likely will have styles that are too
+generic in order to fit into a component or possibly will even be used by all
+of the components you create.
+
+This for example could be generic typographic definitions, debugging styles or
+basic print styles.
+*/
+@import "src/sass/shared/debug";
+@import "src/sass/shared/base";
+@import "src/sass/shared/helper";
+@import "src/sass/shared/link";
+@import "src/sass/shared/typography";
+@import "src/sass/shared/print";
+@import "src/sass/shared/images";
