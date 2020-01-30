@@ -1,10 +1,11 @@
 # Cevi-Logo Generator
 
-## Use it:
+## Use it
 
 [Logo-Generator](https://logo.cevi.ch)
 
-## Use it on your website:
+
+## Use it on your website
 
 You can add the logo-generator to your website via an iframe:
 
@@ -14,6 +15,7 @@ You can add the logo-generator to your website via an iframe:
         height="700"
         title=""></iframe>
 ```
+
 
 ## Installation
 
@@ -30,6 +32,7 @@ Install now the node-packages via `npm`:
 $ npm install
 ```
 
+
 ## Development
 
 Now you can use the following commands to build your local website:
@@ -38,9 +41,11 @@ Now you can use the following commands to build your local website:
 $ npm run build
 ```
 
+
 ## Examples
 
 - [cevi.ws/cevi-online/logo-generator](https://www.cevi.ws/cevi-online/logo-generator)
+
 
 ## Contributors
 
