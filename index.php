@@ -20,7 +20,7 @@
     <?php if (!$show_iframe): ?>
     <header class="header-bar">
         <div class="logowrapper">
-            <a href="https://cevi-waedi.ch/" class="logo">
+            <a href="https://logo.cevi.ch/" class="logo">
                 <img class="image" src="assets/images/logo.svg">
                 <img class="image -short" src="assets/images/logo.svg">
             </a>
