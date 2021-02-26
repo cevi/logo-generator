@@ -31,7 +31,7 @@
     "canvg": "^1.5.3",
     "font-awesome": "^4.7.0",
     "include-media": "^1.4.9",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.1",
     "mq-scss": "^2.1.5",
     "normalize.css": "^7.0.0",
     "text-to-svg": "^3.1.5"

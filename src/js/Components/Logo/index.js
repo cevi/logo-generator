@@ -4,7 +4,7 @@ import $ from 'jquery';
 import TextToSVG from 'text-to-svg';
 
 /**
- * @author Beat Temperli
+ * @author Beat Temperli v/o Zottel
  */
 export default class Logo {
     constructor() {
@@ -43,19 +43,10 @@ export default class Logo {
         return this;
     }
 
-    // /**
-    //  * Load the claim data.
-    //  */
-    // loadClaimData() {
-    //     this.claimData = Drupal.getClaimData();
-    //     this.$claim = $('[data-claim]');
-    // }
-
     loadGenerator() {
         this.$generator = $('.logo-generator');
         this.$testSvg = $('#svg-test');
     }
-
 
     /**
      * Build the svg-claim.
@@ -336,31 +327,12 @@ export default class Logo {
             correction -= 24;
         }
 
-
         if (fontCharCorrections[first]) {
             correction += fontCharCorrections[first];
         }
 
         return correction;
     }
-
-    // /**
-    //  * Prepare the claim.
-    //  *
-    //  * - Get the texts
-    //  * - Get the width of all the texts
-    //  */
-    // prepareClaim() {
-    //     this.splitSpaceForTriangle = (
-    //         this.claimData.claim.left.substring(this.claimData.claim.left.length - 1) === ' '
-    //         || this.claimData.claim.right.substring(0, 1) === ' '
-    //     );
-    //     this.textLogoLeft = this.removeBadText(this.claimData.logo.left.toUpperCase());
-    //     this.textLogoRight = this.removeBadText(this.claimData.logo.right.toUpperCase());
-    //     this.textLogoRightSecond = this.removeBadText(this.claimData.logo.rightsecond.toUpperCase());
-    //     this.textClaimLeft = this.removeBadText(this.claimData.claim.left.toUpperCase());
-    //     this.textClaimRight = this.removeBadText(this.claimData.claim.right.toUpperCase());
-    // }
 
     /**
      * Prepare the generator, load all html-elements.
@@ -507,7 +479,6 @@ export default class Logo {
      * Initialize function
      */
     init() {
-        // this.loadClaimData();
         this.loadGenerator();
 
         if (this.$generator.length > 0) {
