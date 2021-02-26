@@ -4,6 +4,16 @@
 
 [Logo-Generator](https://logo.cevi.ch)
 
+## Preset content
+
+[logo.cevi.ch?logo-left=CEVI&logo-right=WÄDI-AU](https://logo.cevi.ch?logo-left=CEVI&logo-right=WÄDI-AU&claim-left=FREUNDE&claim-right=%20FÜRS%20LEBEN)
+
+Possible GET-Parameter:
+- `logo-left`
+- `logo-right`
+- `logo-right-second`
+- `claim-left`
+- `claim-right`
 
 ## Use it on your website
 
