@@ -15,6 +15,24 @@
 
 <?php
     $show_iframe = key_exists('iframe', $_GET) && $_GET['iframe'] === 'true';
+
+    $input_logo['left'] = 'CEVI';
+    $input_logo['right'] = 'SCHWEIZ';
+    $input_logo['right-second'] = '';
+    $claim['left'] = 'VIELFALT GEMEINSAM';
+    $claim['right'] = ' ERLEBEN.';
+
+    foreach (array_keys($input_logo) as $key) {
+        if (isset($_GET['logo-' . $key])) {
+            $input_logo[$key] = $_GET['logo-' . $key];
+        }
+    }
+
+    foreach (array_keys($claim) as $key) {
+        if (isset($_GET['claim-' . $key])) {
+            $claim[$key] = $_GET['claim-' . $key];
+        }
+    }
 ?>
 
     <?php if (!$show_iframe): ?>
@@ -35,23 +53,23 @@
             <div class="userinputs">
                 <div class="form-wrapper inputwrapper">
                     <label for="input-logo-left">Logo links</label>
-                    <input id="input-logo-left" class="input" name="left" value="CEVI">
+                    <input id="input-logo-left" class="input" name="left" value="<?php echo $input_logo['left']; ?>">
                 </div>
                 <div class="form-wrapper inputwrapper">
                     <label for="input-logo-right">Logo rechts (1. Zeile)</label>
-                    <input id="input-logo-right" class="input" name="logo-right" value="SCHWEIZ">
+                    <input id="input-logo-right" class="input" name="logo-right" value="<?php echo $input_logo['right']; ?>">
                 </div>
                 <div class="form-wrapper inputwrapper">
                     <label for="input-logo-right-second">Logo rechts (2. Zeile)</label>
-                    <input id="input-logo-right-second" class="input" name="logo-right-second" value="">
+                    <input id="input-logo-right-second" class="input" name="logo-right-second" value="<?php echo $input_logo['right-second']; ?>">
                 </div>
                 <div class="form-wrapper inputwrapper">
                     <label for="input-claim-left">Claim links</label>
-                    <input id="input-claim-left" class="input" name="claim-left" value="VIELFALT GEMEINSAM">
+                    <input id="input-claim-left" class="input" name="claim-left" value="<?php echo $claim['left']; ?>">
                 </div>
                 <div class="form-wrapper inputwrapper">
                     <label for="input-claim-right">Claim rechts</label>
-                    <input id="input-claim-right" class="input" name="claim-right" value=" ERLEBEN.">
+                    <input id="input-claim-right" class="input" name="claim-right" value="<?php echo $claim['right']; ?>">
                 </div>
             </div>
             <div class="form-wrapper">
