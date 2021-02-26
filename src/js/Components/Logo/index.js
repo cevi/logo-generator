@@ -1,4 +1,5 @@
 /* global document, XMLSerializer */
+
 import Canvg from 'canvg';
 import $ from 'jquery';
 import TextToSVG from 'text-to-svg';

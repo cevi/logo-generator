@@ -12,7 +12,7 @@
     "js-watch": "watchify ./src/js/App.js -o ./assets/css/scripts.js --verbose",
     "lint": "npm run sass-lint && npm run js-lint",
     "sass-watch": "node-sass --watch src/sass -o assets/css",
-    "sass": "node-sass src/sass -o assets/css",
+    "sass": "node-sass src/sass -o assets/css --output-style compressed",
     "sass-lint": "stylelint src/sass",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "npm run js-watch sass-watch"
@@ -21,7 +21,7 @@
     "type": "git",
     "url": "git+https://github.com/cevi/logo-generator.git"
   },
-  "author": "",
+  "author": "Beat Temperli v/o Zottel",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/cevi/logo-generator/issues"

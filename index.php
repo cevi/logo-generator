@@ -47,7 +47,7 @@
     <?php endif; ?>
 
     <div class="logo-generator <?php if ($show_iframe): echo '-iframe'; endif; ?>">
-        <h1>Cevi Logo Generator <small>[BETA-Version]</small></h1>
+        <h1>Cevi Logo Generator <small>[v1.0.0]</small></h1>
 
         <form name="logoGeneratorForm" class="userinputform">
             <div class="userinputs">
