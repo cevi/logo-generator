@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/styles.css?v1.0.0" />
 </head>
 
 <body>
@@ -167,7 +167,7 @@
         </div>
     </div>
 
-    <script src="assets/js/scripts.min.js"></script>
+    <script src="assets/js/scripts.min.js?v1.0.0"></script>
 </body>
 
 </html>
