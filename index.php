@@ -167,7 +167,7 @@
         </div>
     </div>
 
-    <script src="assets/js/scripts.js"></script>
+    <script src="assets/js/scripts.min.js"></script>
 </body>
 
 </html>
