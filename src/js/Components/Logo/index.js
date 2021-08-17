@@ -380,19 +380,6 @@ export default class Logo {
             'jungwacht',
             'jubla',
             'blauring',
-            'scheisse',
-            'shit',
-            'fuck',
-            'ficken',
-            'fick',
-            'penis',
-            'pimmel',
-            'arsch',
-            'arschloch',
-            'fotze',
-            'schlampe',
-            'bitch',
-            'nutte',
             'blaues kreuz',
             'pro natura',
             'naturfreunde',
@@ -403,11 +390,42 @@ export default class Logo {
             'kadetten',
             'sajv',
             'rover',
-            'piss'
+            'piss',
+            'scheisse',
+            'shit',
+            'fuck',
+            'ficken',
+            'fick',
+            'penis',
+            'pimmel',
+            'arschloch',
+            'fotze',
+            'schlampe',
+            'bitch',
+            'nutte',
+            'titten'
         ];
 
         for (let i = 0; i < badWords.length; i += 1) {
             const regexp = new RegExp(badWords[i].toUpperCase(), 'g');
+            tmpText = tmpText.replace(regexp, '---');
+        }
+
+        /**
+         * #11 defuse badwords
+         * @see https://github.com/cevi/logo-generator/issues/11 */
+        const blackList = [
+            'arsch'
+        ];
+        const whiteList = [
+            'marsch'
+        ];
+        if (blackList.length !== whiteList.length) {
+            throw new Error('blacklist words and whitelist words have not equal length, they must match together.');
+        }
+        for (let i = 0; i < blackList.length; i += 1) {
+            const regexp = new RegExp(`${blackList[i].toUpperCase()}(?<!${whiteList[i].toUpperCase()})`, 'g');
+            console.log(regexp);
             tmpText = tmpText.replace(regexp, '---');
         }
 
