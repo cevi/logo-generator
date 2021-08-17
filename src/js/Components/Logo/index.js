@@ -425,7 +425,6 @@ export default class Logo {
         }
         for (let i = 0; i < blackList.length; i += 1) {
             const regexp = new RegExp(`${blackList[i].toUpperCase()}(?<!${whiteList[i].toUpperCase()})`, 'g');
-            console.log(regexp);
             tmpText = tmpText.replace(regexp, '---');
         }
 
