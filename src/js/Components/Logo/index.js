@@ -431,17 +431,21 @@ export default class Logo {
         $('#canvas-logo-output').height('178px');
         $('#canvas-claim-output').height('430px');
 
-        Canvg(
-            logoCanvas,
+        const logoCanvg = Canvg.fromString(
+            logoCanvas.getContext('2d'),
             logoSvg,
             { ignoreMouse: true, ignoreAnimation: true }
         );
 
-        Canvg(
-            claimCanvas,
+        const claimCanvg = Canvg.fromString(
+            claimCanvas.getContext('2d'),
             claimSvg,
             { ignoreMouse: true, ignoreAnimation: true }
         );
+
+        // render canvas
+        logoCanvg.render();
+        claimCanvg.render();
 
         // Add SVG to svg-link
         // Get svg source.

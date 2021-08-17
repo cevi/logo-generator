@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/cevi/logo-generator#readme",
   "dependencies": {
-    "canvg": "^1.5.3",
+    "canvg": "^3.0.7",
     "font-awesome": "^4.7.0",
     "include-media": "^1.4.9",
     "jquery": "^3.5.1",
