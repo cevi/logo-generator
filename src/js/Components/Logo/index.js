@@ -412,7 +412,7 @@ export default class Logo {
         }
 
         /**
-         * #11 defuse badwords
+         * #11 defuse bad words.
          * @see https://github.com/cevi/logo-generator/issues/11 */
         const blackList = [
             'arsch'
