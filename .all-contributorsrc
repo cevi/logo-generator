@@ -1,0 +1,54 @@
+{
+  "projectName": "logo-generator",
+  "projectOwner": "cevi",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "none",
+  "types": {
+    "bug": {
+      "symbol": "🐛",
+      "description": "Reported a bug",
+      "link": "https://github.com/cevi/logo-generator/issues?q=author%3A<%= contributor.login %>"
+    },
+    "maintenance": {
+      "symbol": "🚧",
+      "description": "Maintenance",
+      "link": "https://github.com/cevi/logo-generator/issues?q=author%3A<%= contributor.login %>"
+    },
+    "ideas": {
+      "symbol": "🤔",
+      "description": "Ideas, Planning, & Feedback",
+      "link": "https://github.com/cevi/logo-generator/issues?q=author%3A<%= contributor.login %>"
+    }
+  },
+  "contributors": [
+    {
+      "login": "btemperli",
+      "name": "Beat Temperli",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3005632?v=4",
+      "profile": "https://github.com/btemperli",
+      "contributions": [
+        "code",
+        "doc",
+        "ideas",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "wp99cp",
+      "name": "Cyrill Püntener",
+      "avatar_url": "https://avatars.githubusercontent.com/u/34008738?v=4",
+      "profile": "https://github.com/wp99cp",
+      "contributions": [
+        "ideas",
+        "bug"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}
