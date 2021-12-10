@@ -1,6 +1,7 @@
 # Frontend
 node_modules
 assets
+csv
 
 # system
 .idea

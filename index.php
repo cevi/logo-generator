@@ -14,6 +14,8 @@
 <body>
 
 <?php
+    require_once 'ApiHelper.php';
+
     $show_iframe = key_exists('iframe', $_GET) && $_GET['iframe'] === 'true';
 
     $input_logo['left'] = 'CEVI';
@@ -21,6 +23,9 @@
     $input_logo['right-second'] = '';
     $claim['left'] = 'VIELFALT GEMEINSAM';
     $claim['right'] = ' ERLEBEN.';
+
+    $api_helper = new ApiHelper();
+    $id = $api_helper->getNewSessionId();
 
     foreach (array_keys($input_logo) as $key) {
         if (isset($_GET['logo-' . $key])) {
@@ -152,20 +157,24 @@
             <div class="info">
                 CANVAS LOGO
             </div>
-            <canvas id="canvas-logo-output"/>
+            <canvas id="canvas-logo-output" />
         </div>
 
         <div class="generatoroutput hidden">
             <div class="info">
                 CANVAS CLAIM
             </div>
-            <canvas id="canvas-claim-output"/>
+            <canvas id="canvas-claim-output" />
         </div>
 
         <div class="generatoroutput hidden">
             <svg id="svg-test"></svg>
         </div>
     </div>
+
+    <script>
+        document.session_id = '<?php echo $id; ?>';
+    </script>
 
     <script src="assets/js/scripts.min.js?v1.0.0"></script>
 </body>

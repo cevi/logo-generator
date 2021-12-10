@@ -2,6 +2,7 @@
 
 // Import the components.
 import Logo from './Components/Logo';
+import ApiLinks from './Components/ApiLinks';
 
 // Import the helpers.
 import Event from './Helper/Event';
@@ -14,13 +15,14 @@ class App {
     static registerComponents() {
         // Self-initiating components:
         new Logo(); // eslint-disable-line no-new
+        new ApiLinks(); // eslint-disable-line no-new
     }
 
     constructor() {
         App.registerHelpers();
         App.registerComponents();
 
-        console.log('construct');
+        console.log('app is ready and running');
     }
 }
 

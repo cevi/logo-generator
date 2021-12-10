@@ -1,4 +1,4 @@
-/* global document, XMLSerializer */
+/* global document, XMLSerializer, window */
 
 import Canvg from 'canvg';
 import $ from 'jquery';
@@ -357,6 +357,15 @@ export default class Logo {
         this.textLogoRightSecond = this.removeBadText(this.$logorightsecond.val().toUpperCase());
         this.textClaimLeft = this.removeBadText(this.$claimleft.val().toUpperCase());
         this.textClaimRight = this.removeBadText(this.$claimright.val().toUpperCase());
+
+        window.generator_data = {
+            logo_text_left: this.textLogoLeft,
+            logo_text_right: this.textLogoRight,
+            logo_text_right_second: this.textLogoRightSecond,
+            claim_text_left: this.textClaimLeft,
+            claim_text_right: this.textClaimRight,
+            color: this.colorRadio.value
+        };
 
         this.$logoleft.val(this.textLogoLeft);
         this.$logoright.val(this.textLogoRight);
