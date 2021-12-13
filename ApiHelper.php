@@ -61,6 +61,44 @@ class ApiHelper
     }
 
     /**
+     * Get record length
+     * Problem: Not all session-numbers have the same length.
+     * Look at the last line of the file, read it to find out how long one line is exactly.
+     * @see https://stackoverflow.com/a/24483261/2241151
+     */
+    private function getRecordLength($file_path) {
+        $line = '';
+
+        $f = fopen($file_path, 'r');
+        $cursor = -1;
+
+        fseek($f, $cursor, SEEK_END);
+        $char = fgetc($f);
+
+        /**
+         * Trim trailing newline chars of the file
+         */
+        while ($char === "\n" || $char === "\r") {
+            fseek($f, $cursor--, SEEK_END);
+            $char = fgetc($f);
+        }
+
+        /**
+         * Read until the start of file or first newline char
+         */
+        while ($char !== false && $char !== "\n" && $char !== "\r") {
+            /**
+             * Prepend the new char
+             */
+            $line = $char . $line;
+            fseek($f, $cursor--, SEEK_END);
+            $char = fgetc($f);
+        }
+
+        return strlen($line);
+    }
+
+    /**
      * Search in CSV for a special $value.
      *
      * @param $file string          filename & path of the csv file
@@ -70,14 +108,17 @@ class ApiHelper
      *   array: full csv line
      *   false: $value is not available.
      */
-    private function searchInCsv($file, $value, $position = 0, $recordLength = 47) {
+    private function searchInCsv($file, $value, $position = 0) {
         $fp = fopen($file, "r");
-        $cursor = filesize($file);
+        $recordLength = $this->getRecordLength($file) + 1;
+        $fileSize = filesize($file);
+        $cursor = $fileSize;
         fseek($fp, $cursor);
         while ($cursor >= 0)
         {
             $record = fgetcsv($fp, 0, $this->csv_separator);
-            if ($record) {
+
+            if ($record && isset($record[$position])) {
                 if ($record[$position] == $value) {
                     return $record;
                 }
@@ -135,7 +176,7 @@ class ApiHelper
         $session_id = session_id();
 
         if (strlen($session_id) < 1) {
-            $session_id = $this->generateRandomString(26);
+            $session_id = $this->generateRandomString(32);
         }
 
         return $session_id . '-' . $this->generateRandomString(8);
