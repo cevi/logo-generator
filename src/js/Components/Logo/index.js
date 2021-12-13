@@ -40,8 +40,6 @@ export default class Logo {
             self.textToSvg = textToSvg;
             self.init();
         });
-
-        return this;
     }
 
     loadGenerator() {
