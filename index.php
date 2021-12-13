@@ -1,3 +1,9 @@
+<?php
+    $package_raw = file_get_contents('package.json');
+    $package_json = json_decode($package_raw,true);
+
+    $version = $package_json['version'];
+?>
 <!DOCTYPE html>
 <html>
 
@@ -8,7 +14,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <link rel="stylesheet" href="assets/css/styles.css?v1.0.0" />
+    <link rel="stylesheet" href="assets/css/styles.css?v<?php echo $version; ?>" />
 </head>
 
 <body>
@@ -52,7 +58,7 @@
     <?php endif; ?>
 
     <div class="logo-generator <?php if ($show_iframe): echo '-iframe'; endif; ?>">
-        <h1>Cevi Logo Generator <small>[v1.1.0]</small></h1>
+        <h1>Cevi Logo Generator <small>[v<?php echo $version; ?>]</small></h1>
 
         <form name="logoGeneratorForm" class="userinputform">
             <div class="userinputs">
@@ -176,7 +182,7 @@
         document.session_id = '<?php echo $id; ?>';
     </script>
 
-    <script src="assets/js/scripts.min.js?v1.0.0"></script>
+    <script src="assets/js/scripts.min.js?v<?php echo $version; ?>"></script>
 </body>
 
 </html>
