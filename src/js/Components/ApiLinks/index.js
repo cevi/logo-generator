@@ -45,33 +45,71 @@ export default class ApiLinks {
                 type: this.typeClaim
             }
         ];
+
+        this.contexts = [
+            {
+                link: document.getElementById('svg-logo-output'),
+                image: 'svg',
+                type: this.typeLogo
+            },
+            {
+                link: document.getElementById('jpg-logo-output'),
+                image: 'jpg',
+                type: this.typeLogo
+            },
+            {
+                link: document.getElementById('png-logo-output'),
+                image: 'png',
+                type: this.typeLogo
+            },
+            {
+                link: document.getElementById('svg-claim-output'),
+                image: 'svg',
+                type: this.typeClaim
+            },
+            {
+                link: document.getElementById('png-claim-output'),
+                image: 'png',
+                type: this.typeClaim
+            }
+        ];
+    }
+
+    handlePostData(self, item) { // eslint-disable-line class-methods-use-this
+        if (item.type === self.typeClaim) {
+            self.postData('/api.php', {
+                session_id: document.session_id,
+                type: item.type,
+                image_type: item.image,
+                logo_left: window.generator_data.logo_text_left,
+                logo_right: window.generator_data.logo_text_right,
+                logo_right_second: window.generator_data.logo_text_right_second,
+                claim_left: window.generator_data.claim_text_left,
+                claim_right: window.generator_data.claim_text_right,
+                color: window.generator_data.color
+            });
+        } else if (item.type === self.typeLogo) {
+            self.postData('/api.php', {
+                session_id: document.session_id,
+                type: item.type,
+                image_type: item.image,
+                logo_left: window.generator_data.logo_text_left,
+                logo_right: window.generator_data.logo_text_right,
+                logo_right_second: window.generator_data.logo_text_right_second,
+                color: window.generator_data.color
+            });
+        }
     }
 
     handleLinkClick(self, item) { // eslint-disable-line class-methods-use-this
         item.link.addEventListener('click', () => {
-            if (item.type === self.typeClaim) {
-                self.postData('/api.php', {
-                    session_id: document.session_id,
-                    type: item.type,
-                    image_type: item.image,
-                    logo_left: window.generator_data.logo_text_left,
-                    logo_right: window.generator_data.logo_text_right,
-                    logo_right_second: window.generator_data.logo_text_right_second,
-                    claim_left: window.generator_data.claim_text_left,
-                    claim_right: window.generator_data.claim_text_right,
-                    color: window.generator_data.color
-                });
-            } else if (item.type === self.typeLogo) {
-                self.postData('/api.php', {
-                    session_id: document.session_id,
-                    type: item.type,
-                    image_type: item.image,
-                    logo_left: window.generator_data.logo_text_left,
-                    logo_right: window.generator_data.logo_text_right,
-                    logo_right_second: window.generator_data.logo_text_right_second,
-                    color: window.generator_data.color
-                });
-            }
+            self.handlePostData(self, item);
+        });
+    }
+
+    handleImageContextMenuClick(self, item) { // eslint-disable-line class-methods-use-this
+        item.link.addEventListener('contextmenu', () => {
+            self.handlePostData(self, item);
         });
     }
 
@@ -83,6 +121,10 @@ export default class ApiLinks {
 
         Object.values(this.links).forEach((item) => {
             this.handleLinkClick(self, item);
+        });
+
+        Object.values(this.contexts).forEach((item) => {
+            this.handleImageContextMenuClick(self, item);
         });
     }
 }
