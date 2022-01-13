@@ -12,6 +12,7 @@
     <meta name="og:image" content="https://logo.cevi.ch/assets/images/logo.svg">
     <meta name="description" content="Logo Generator für dein eigenes Cevi-Logo">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="author" content="Beat Temperli v/o Zottel">
 
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <link rel="stylesheet" href="assets/css/styles.css?v<?php echo $version; ?>" />
@@ -50,8 +51,8 @@
     <header class="header-bar">
         <div class="logowrapper">
             <a href="https://logo.cevi.ch/" class="logo">
-                <img class="image" src="assets/images/logo.svg">
-                <img class="image -short" src="assets/images/logo.svg">
+                <img alt="Logo Cevi Schweiz" class="image" src="assets/images/logo.svg">
+                <img alt="Kurzes Logo Cevi Schweiz" class="image -short" src="assets/images/logo.svg">
             </a>
         </div>
     </header>
@@ -111,7 +112,7 @@
             <div class="info">SVG Logo (Vektorgrafik)</div>
             <div class="svgwrapper" id="svg-logo-output"></div>
             <div class="linkwrapper">
-                <a class="link" href="#" target="_blank" id="svg-logo-link" download="logo.svg">→</a>
+                <a class="link" href="#" target="_blank" id="svg-logo-link" download="logo.svg">Download SVG Logo</a>
             </div>
         </div>
 
@@ -119,9 +120,9 @@
             <div class="info">
                 PNG Logo
             </div>
-            <img id="png-logo-output"/>
+            <img src="#" alt="Logo Ausgabe im Format PNG" id="png-logo-output"/>
             <div class="linkwrapper">
-                <a class="link" href="#" target="_blank" id="png-logo-link" download="logo.png">→</a>
+                <a class="link" href="#" target="_blank" id="png-logo-link" download="logo.png">Download PNG Logo</a>
             </div>
         </div>
 
@@ -129,9 +130,9 @@
             <div class="info">
                 JPG Logo
             </div>
-            <img id="jpg-logo-output"/>
+            <img src="#" alt="Logo Ausgabe im Format JPG" id="jpg-logo-output"/>
             <div class="linkwrapper">
-                <a class="link" href="#" target="_blank" id="jpg-logo-link" download="logo.jpg">→</a>
+                <a class="link" href="#" target="_blank" id="jpg-logo-link" download="logo.jpg">Download JPG Logo</a>
             </div>
         </div>
 
@@ -151,7 +152,7 @@
             <div class="info">
                 PNG Claim (teilweise transparent)
             </div>
-            <img id="png-claim-output"/>
+            <img src="#" alt="Claim Ausgabe im Format PNG" id="png-claim-output"/>
             <div class="linkwrapper">
                 <a class="link" href="#" target="_blank" id="png-claim-link" download="claim.png">→</a>
             </div>
