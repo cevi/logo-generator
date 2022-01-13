@@ -42,6 +42,11 @@ Install now the node-packages via `npm`:
 $ npm install
 ```
 
+The access to the admin-page is restricted. Copy the file `./admin/example.env` to `./admin/.env` and add there your own hashed password:
+
+```php
+echo password_hash("your password here", PASSWORD_BCRYPT, $options);
+```
 
 ## Development
 

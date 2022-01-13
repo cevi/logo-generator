@@ -3,6 +3,9 @@ node_modules
 assets
 csv
 
+# PHP
+admin/.env
+
 # system
 .idea
 .DS_Store

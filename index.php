@@ -1,7 +1,6 @@
 <?php
     $package_raw = file_get_contents('package.json');
     $package_json = json_decode($package_raw,true);
-
     $version = $package_json['version'];
 ?>
 <!DOCTYPE html>

@@ -60,6 +60,38 @@ class ApiHelper
         return $randomString;
     }
 
+    private function countFileLines($filePath) {
+        $lineCount = 0;
+        $handle = fopen($filePath, "r");
+        while(!feof($handle)){
+            $line = fgets($handle);
+            $lineCount++;
+        }
+
+        fclose($handle);
+        return $lineCount;
+    }
+
+    private function countImageTypes($filename) {
+        $fp = fopen('../' . $filename, "r");
+        $data = [
+            'count_svg' => 0,
+            'count_jpg' => 0,
+            'count_png' => 0
+        ];
+
+        // first line: header data
+        fgetcsv($fp, 0, $this->csv_separator);
+
+        while (($line = fgetcsv($fp, 0, $this->csv_separator)) !== FALSE) {
+            // update image_type counter
+            $data['count_' . $line[2]] += 1;
+        }
+        fclose($fp);
+
+        return $data;
+    }
+
     /**
      * Get record length
      * Problem: Not all session-numbers have the same length.
@@ -270,5 +302,28 @@ class ApiHelper
         $file = new SplFileObject($this->csv_filename_claim, 'a');
         $file->fputcsv($claimData, $this->csv_separator);
         $file = null;
+    }
+
+    function adminGetVisitors() {
+        $sessionIdCounter = $this->countFileLines('../' . $this->csv_filename_session) - 2;
+        $claimCounter = $this->countFileLines('../' . $this->csv_filename_claim) - 2;
+        $logoCounter = $this->countFileLines('../' . $this->csv_filename_logo) - 2;
+        return [
+            'session' => $sessionIdCounter,
+            'claim' => $claimCounter,
+            'logo' => $logoCounter,
+        ];
+    }
+
+    function adminGetLogoData() {
+        $logoCounter = $this->countFileLines('../' . $this->csv_filename_logo) - 2;
+        $imageTypeLogo = $this->countImageTypes($this->csv_filename_logo);
+        $imageTypeClaim = $this->countImageTypes($this->csv_filename_claim);
+
+        return [
+            'counter' => $logoCounter,
+            'image_type_logo' => $imageTypeLogo,
+            'image_type_claim' => $imageTypeClaim,
+        ];
     }
 }
