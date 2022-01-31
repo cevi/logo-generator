@@ -49,7 +49,7 @@ sourcePath: /components/_header-bar.scss
                     display: block;
                 }
 
-                @include media('>=large') {
+                @include media(">=large") {
                     display: block;
 
                     &.-short {

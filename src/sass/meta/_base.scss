@@ -1,5 +1,5 @@
 // Base font family.
-$base-font-family: 'Lora', serif !default;
+$base-font-family: "Lora", serif !default;
 
 // Base font size. Will be used in :root as font-size.
 $base-font-size: 16px !default;
@@ -7,17 +7,17 @@ $base-font-size-mobile: 14px !default;
 $base-font-size-small: 12px !default;
 
 // Base headline font family.
-$base-headline-family: 'Montserrat', sans-serif !default;
+$base-headline-family: "Montserrat", sans-serif !default;
 
 // Base headline text rendering.
 // @see https://developer.mozilla.org/en/docs/Web/CSS/text-rendering
-$base-headline-rendering: optimizeLegibility !default;
+$base-headline-rendering: optimizelegibility !default;
 
 // Base line-height, also represents the vertical-base unit.
 $base-line-height: 1.375rem !default;
 
 // Base quote font family.
-$base-quote-family: 'Lora', serif !default;
+$base-quote-family: "Lora", serif !default;
 
 $base-transition-speed: 300ms;
 
@@ -30,7 +30,7 @@ $base-horizontal-margin: 2rem * 0.7145;
 $page-padding: 20px;
 
 // Font-awesome overrides
-$fa-font-path: '/assets/fonts/fontawesome';
+$fa-font-path: "/assets/fonts/fontawesome";
 
 // Cevi styles
 $cevi-line-size: 20px;

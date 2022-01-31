@@ -3,9 +3,12 @@
         "stylelint-config-standard",
         "stylelint-rscss/config"
     ],
+    "customSyntax": "postcss-scss",
     "rules": {
         "comment-whitespace-inside": null,
         "indentation": [4, {}],
-        "at-rule-no-unknown": null
+        "at-rule-no-unknown": null,
+        "color-function-notation": "legacy",
+        "selector-class-pattern": "^-|([a-z][a-z0-9]*)(-[a-z0-9]+)*$"
     }
 }

@@ -24,7 +24,7 @@ p a { // stylelint-disable-line rscss/no-descendant-combinator
     &::before {
         @include fa-icon;
 
-        content: '\f0c1'; // Font Awesome-icon link
+        content: "\f0c1"; // Font Awesome-icon link
         position: absolute;
         left: 2px;
         top: 1px;
@@ -32,13 +32,13 @@ p a { // stylelint-disable-line rscss/no-descendant-combinator
 
     &.-obfuscated {
         &::before {
-            content: '\f003'; // Font Awesome-icon envelope-o
+            content: "\f003"; // Font Awesome-icon envelope-o
         }
     }
 
     &.-phone {
         &::before {
-            content: '\f095'; // Font Awesome-icon phone
+            content: "\f095"; // Font Awesome-icon phone
             left: 5px;
         }
     }

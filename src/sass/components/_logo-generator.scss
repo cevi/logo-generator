@@ -26,7 +26,7 @@ name: Logo Generator
                 margin-right: $base-vertical-margin;
             }
 
-            @include media('<1000px') {
+            @include media("<1000px") {
                 flex-wrap: wrap;
 
                 > .inputwrapper {
@@ -67,7 +67,7 @@ name: Logo Generator
             width: 40px;
             padding: 8px 14px;
             margin-top: 5px;
-            background-image: url('/assets/images/download.svg');
+            background-image: url("/assets/images/download.svg");
             background-size: 55%;
             background-repeat: no-repeat;
             background-position: 50% 50%;

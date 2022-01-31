@@ -35,7 +35,12 @@ More examples on this <a href="https://codepen.io/btemperli/pen/EQwLYG" target="
 </div>
 
 <div class="color-box -switchcolor -switchsize -leftarrow">
-  <div class="left -image" style="background-image: url('http://via.placeholder.com/600x600/22cc99/7700dd')">Left side is an image.<br>-switchcolor<br>-switchsize<br>-rightarrow</div>
+  <div class="left -image" style="background-image: url('http://via.placeholder.com/600x600/22cc99/7700dd')">
+      Left side is an image.
+      <br>-switchcolor
+      <br>-switchsize
+      <br>-rightarrow
+  </div>
   <div class="right">Right side is red.</div>
 </div>
 ```
@@ -79,7 +84,7 @@ $background-size: auto 125vh;
 
         &::after {
             position: absolute;
-            content: '';
+            content: "";
             height: 0;
             width: 0;
             top: 50%;
@@ -99,7 +104,7 @@ $background-size: auto 125vh;
 
         &::before {
             position: absolute;
-            content: '';
+            content: "";
             height: 100%;
             width: $line-width;
             background-color: $color-background;
@@ -165,7 +170,9 @@ $background-size: auto 125vh;
             transition: background-color $base-transition-speed linear;
 
             &::after {
-                transition: border-left-color $base-transition-speed linear, border-right-color $base-transition-speed linear;
+                transition:
+                    border-left-color $base-transition-speed linear,
+                    border-right-color $base-transition-speed linear;
             }
         }
 

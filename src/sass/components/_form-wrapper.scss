@@ -47,7 +47,6 @@ $padding-vertical: 10px;
     }
 
     select { // stylelint-disable-line rscss/no-descendant-combinator
-        -webkit-appearance: none;
         background: transparent;
         border-radius: 0;
         line-height: 24px;
