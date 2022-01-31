@@ -46,7 +46,7 @@
     "browserify": "^16.5.0",
     "browserify-ejs-tran": "git+https://git@github.com/btemperli/browserify-ejs-tran.git",
     "browserify-shim": "^3.8.14",
-    "copy": "^0.0.1",
+    "copyfiles": "^2.4.1",
     "deamdify": "^0.3.0",
     "eslint": "^8.0.0",
     "eslint-config-airbnb": "^19.0.2",

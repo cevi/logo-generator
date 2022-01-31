@@ -1,9 +1,17 @@
-const copy = require('copy');
+const copyfiles = require('copyfiles');
 
-copy('src/images/*', 'assets/images', function(err, file) {
-    // exposes the vinyl `file` created when the file is copied
+copyfiles(['./src/images/*', './assets'], {
+    'up': 1
+}, (err) => {
+    if (err) {
+        console.log(err);
+    }
 });
 
-copy('src/fonts/**', 'assets/fonts', function(err, file) {
-    // exposes the vinyl `file` created when the file is copied
+copyfiles(['./src/fonts/**', './assets'], {
+    'up': 1
+}, (err) => {
+    if (err) {
+        console.log(err);
+    }
 });
