@@ -60,6 +60,43 @@ class ApiHelper
         return $randomString;
     }
 
+    /**
+     * Get Session Timestamps
+     * ----------------------
+     * - Get all session timestamps
+     * - Gett line count of the csv-file with the sessions
+     *
+     * @return array
+     *  [
+     *      line_count => x,
+     *      timestamps => [192384932, 129384928, ...]
+     *  ]
+     */
+    private function getSessionTimestamps() {
+        $handle = fopen('../' . $this->csv_filename_session, "r");
+        $timestamps = [];
+        $lineCount = 0;
+
+        while(!feof($handle)){
+            $line = fgets($handle);
+            if ($lineCount > 0) {
+                // split at ";" or "\n" (end of $line).
+                $lineContent = preg_split("/;|\\n/", $line);
+                if (isset($lineContent[1]) && $lineContent[1]) {
+                    $timestamps[] = intval($lineContent[1]);
+                }
+            }
+            $lineCount++;
+        }
+
+        fclose($handle);
+
+        return [
+            'line_count' => $lineCount,
+            'timestamps' => $timestamps
+        ];
+    }
+
     private function countFileLines($filePath) {
         $lineCount = 0;
         $handle = fopen($filePath, "r");
@@ -305,13 +342,15 @@ class ApiHelper
     }
 
     function adminGetVisitors() {
-        $sessionIdCounter = $this->countFileLines('../' . $this->csv_filename_session) - 2;
+        $sessionData = $this->getSessionTimestamps();
+        $sessionIdCounter = $sessionData['line_count'] - 2;
         $claimCounter = $this->countFileLines('../' . $this->csv_filename_claim) - 2;
         $logoCounter = $this->countFileLines('../' . $this->csv_filename_logo) - 2;
         return [
             'session' => $sessionIdCounter,
             'claim' => $claimCounter,
             'logo' => $logoCounter,
+            'timestamps' => $sessionData['timestamps'],
         ];
     }
 

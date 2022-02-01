@@ -13,8 +13,46 @@
     require_once '../ApiHelper.php';
     $apiHelper = new ApiHelper();
 
+    function readSessionTimestampDates($timestamps) {
+        arsort($timestamps);
+        $currentTime = time();
+        $currentMonth = date("Y - m", $currentTime);
+        $lastMonth = $currentMonth;
+        $dates = [];
+        $dates[$currentMonth] = 0;
+
+        foreach ($timestamps as $timestamp) {
+            $month = date("Y - m", $timestamp);
+            $compare = $month;
+
+            if (!isset($dates[$month])) {
+                while ($lastMonth != $compare) {
+                    $compareTimestamp = DateTime::createFromFormat('Y - m', $compare)->getTimestamp();
+                    // add 32 days to the compare-date to change months.
+                    $compare = date("Y - m", ($compareTimestamp + 2764800));
+                    if (!isset($dates[$compare])) {
+                        $dates[$compare] = 0;
+                    }
+                }
+
+                $dates[$month] = 0;
+                $lastMonth = $month;
+            }
+
+            // count up this month.
+            $dates[$month] += 1;
+        }
+
+        // sort the dates based on the months/years.
+        ksort($dates);
+
+        return $dates;
+    }
+
     $visitors = $apiHelper->adminGetVisitors();
     $logo = $apiHelper->adminGetLogoData();
+
+    $session_timestamps = readSessionTimestampDates($visitors['timestamps']);
 ?>
 <!doctype html>
 <html lang="en">
@@ -153,7 +191,18 @@
                     </div>
                 </div>
 
-<!--                <canvas class="my-4" id="myChart" width="900" height="380"></canvas>-->
+                <div class="row">
+                    <div class="col">
+                        <div class="card mt-4">
+                            <div class="card-header pb-0">
+                                <h6 class="mb-0 mt-2">Anzahl Besuche</h6>
+                            </div>
+                            <div class="card-body">
+                                <canvas class="my-4" id="session-dates-chart" width="400" height="150"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 <!---->
 <!--                <h2>Section title</h2>-->
 <!--                <div class="table-responsive">-->
@@ -268,33 +317,33 @@
     <!-- Graphs -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
     <script>
-        // var ctx = document.getElementById("myChart");
-        // var myChart = new Chart(ctx, {
-        //     type: 'line',
-        //     data: {
-        //         labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        //         datasets: [{
-        //             data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-        //             lineTension: 0,
-        //             backgroundColor: 'transparent',
-        //             borderColor: '#007bff',
-        //             borderWidth: 2,
-        //             pointBackgroundColor: '#007bff'
-        //         }]
-        //     },
-        //     options: {
-        //         scales: {
-        //             yAxes: [{
-        //                 ticks: {
-        //                     beginAtZero: false
-        //                 }
-        //             }]
-        //         },
-        //         legend: {
-        //             display: false,
-        //         }
-        //     }
-        // });
+        <?php
+            $sessionTimestampKeyString = '["' . implode('", "', array_keys($session_timestamps)) . '"]';
+            $sessionTimestampValueString = '[' . implode(', ', $session_timestamps) . ']';
+        ?>
+        const ctxSessionDate = document.getElementById("session-dates-chart");
+        const sessionDateChart = new Chart(ctxSessionDate, {
+            type: 'line',
+            data: {
+                labels: <?php echo $sessionTimestampKeyString; ?>,
+                datasets: [{
+                    data: <?php echo $sessionTimestampValueString; ?>,
+                    tension: 0.1,
+                    label: 'Anzahl Besuche',
+                    backgroundColor: 'transparent',
+                    borderColor: '#007bff',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#007bff'
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: false,
+                    }
+                }
+            }
+        });
 
         const ctxLogo = document.getElementById("logo-chart");
         const logoChart = new Chart(ctxLogo, {
