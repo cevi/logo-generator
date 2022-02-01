@@ -28,8 +28,9 @@
                             (new DotEnv(__DIR__ . '/.env'))->load();
 
                             $hashed_password = getenv('ADMIN_PASSWORD_HASH');
+                            $saved_username = getenv('ADMIN_USERNAME');
                             $username = $_POST['username']; $password = $_POST['password'];
-                            if ($username === 'admin' && password_verify($password , $hashed_password)) {
+                            if ($username === $saved_username && password_verify($password , $hashed_password)) {
                                 $_SESSION['login'] = true;
                                 header('LOCATION:admin.php');
                                 die();
