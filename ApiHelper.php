@@ -316,12 +316,10 @@ class ApiHelper
     }
 
     function adminGetLogoData() {
-        $logoCounter = $this->countFileLines('../' . $this->csv_filename_logo) - 2;
         $imageTypeLogo = $this->countImageTypes($this->csv_filename_logo);
         $imageTypeClaim = $this->countImageTypes($this->csv_filename_claim);
 
         return [
-            'counter' => $logoCounter,
             'image_type_logo' => $imageTypeLogo,
             'image_type_claim' => $imageTypeClaim,
         ];
