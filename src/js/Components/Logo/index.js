@@ -34,8 +34,6 @@ export default class Logo {
             current: {}
         };
 
-        this.color.current = this.color.web;
-
         TextToSVG.load('/assets/fonts/montserrat/Montserrat-ExtraBold.ttf', (err, textToSvg) => {
             self.textToSvg = textToSvg;
             self.init();
@@ -45,6 +43,7 @@ export default class Logo {
     loadGenerator() {
         this.$generator = $('.logo-generator');
         this.$testSvg = $('#svg-test');
+        this.$shareLink = $('.js-share-link');
     }
 
     /**
@@ -230,6 +229,18 @@ export default class Logo {
         return svg;
     }
 
+    buildShareLinks() {
+        let href = `${window.location.protocol}//${window.location.hostname}`;
+        href = `${href}?logo-left=${this.textLogoLeft}`;
+        href = `${href}&logo-right=${this.textLogoRight}`;
+        href = `${href}&logo-right-second=${this.textLogoRightSecond}`;
+        href = `${href}&claim-left=${this.textClaimLeft}`;
+        href = `${href}&claim-right=${this.textClaimRight}`;
+        href = `${href}&color=${this.color.current.name}`;
+
+        this.$shareLink.attr('href', href);
+    }
+
     /**
      * Generate the text as a SVG-Path.
      *
@@ -344,6 +355,10 @@ export default class Logo {
         this.$claimright = $('#input-claim-right');
         this.$colorRadioGroup = $('input[name="color"]');
         this.colorRadio = document.logoGeneratorForm.color;
+
+        // Set current color based on the form.
+        this.color.current = this.color[this.colorRadio.value];
+        this.color.current.name = this.colorRadio.value;
     }
 
     /**
@@ -515,17 +530,21 @@ export default class Logo {
             this.prepareGenerator();
             this.getGeneratorData();
             this.buildGeneratorImages();
+            this.buildShareLinks();
 
             $('.input').on('keyup', () => {
                 this.getGeneratorData();
                 this.buildGeneratorImages();
+                this.buildShareLinks();
             });
 
             this.$colorRadioGroup.on('change', () => {
                 this.color.current = this.color[this.colorRadio.value];
+                this.color.current.name = this.colorRadio.value;
 
                 this.getGeneratorData();
                 this.buildGeneratorImages();
+                this.buildShareLinks();
             });
         }
     }

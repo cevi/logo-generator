@@ -88,6 +88,17 @@ export default class ApiLinks {
                 claim_right: window.generator_data.claim_text_right,
                 color: window.generator_data.color
             });
+        } else if (item.type === self.typeShare) {
+            self.postData('/api.php', {
+                session_id: document.session_id,
+                type: item.type,
+                logo_left: window.generator_data.logo_text_left,
+                logo_right: window.generator_data.logo_text_right,
+                logo_right_second: window.generator_data.logo_text_right_second,
+                claim_left: window.generator_data.claim_text_left,
+                claim_right: window.generator_data.claim_text_right,
+                color: window.generator_data.color
+            });
         } else if (item.type === self.typeLogo) {
             self.postData('/api.php', {
                 session_id: document.session_id,
@@ -117,6 +128,7 @@ export default class ApiLinks {
         const self = this;
         this.typeLogo = 'logo';
         this.typeClaim = 'claim';
+        this.typeShare = 'share';
         this.prepareLinkElements();
 
         Object.values(this.links).forEach((item) => {
@@ -125,6 +137,15 @@ export default class ApiLinks {
 
         Object.values(this.contexts).forEach((item) => {
             this.handleImageContextMenuClick(self, item);
+        });
+
+        const $shareLinks = document.getElementsByClassName('js-share-link');
+        Array.from($shareLinks).forEach((element) => {
+            element.addEventListener('click', () => {
+                self.handlePostData(self, {
+                    type: this.typeShare
+                });
+            });
         });
     }
 }

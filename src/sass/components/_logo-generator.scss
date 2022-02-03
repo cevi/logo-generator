@@ -63,14 +63,20 @@ name: Logo Generator
             text-indent: -9999px;
             background-color: $color-active;
             display: block;
+            float: left;
             height: 40px;
             width: 40px;
             padding: 8px 14px;
             margin-top: 5px;
+            margin-right: 5px;
             background-image: url("/assets/images/download.svg");
             background-size: 55%;
             background-repeat: no-repeat;
             background-position: 50% 50%;
+
+            &.-share {
+                background-image: url("/assets/images/share-square.svg");
+            }
         }
 
         > .svgwrapper {

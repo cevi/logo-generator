@@ -15,6 +15,19 @@ class LogoGenerator {
         ];
     }
 
+    public static function shareData($id, $session_id, $logo_left, $logo_right, $logo_right_second, $claim_left, $claim_right, $color) {
+        return [
+            $id,
+            $session_id,
+            $logo_left,
+            $logo_right,
+            $logo_right_second,
+            $claim_left,
+            $claim_right,
+            $color
+        ];
+    }
+
     public static function logoData($id, $session_id, $image_type, $logo_left, $logo_right, $logo_right_second, $color) {
         return [
             $id,
@@ -40,9 +53,10 @@ class ApiHelper
     private $csv_filename_session = 'csv/session_entries.csv';
     private $csv_filename_logo = 'csv/logo_entries.csv';
     private $csv_filename_claim = 'csv/claim_entries.csv';
+    private $csv_filename_share = 'csv/share_entries.csv';
     private $csv_separator = ';';
-    // timeout for the api: 15 minutes (900 seconds)
-    private $timeout = 900;
+    // timeout for the api: 30 minutes (1800 seconds)
+    private $timeout = 1800;
 
     /**
      * Generate a random string of 0-9a-zA-Z
@@ -211,8 +225,8 @@ class ApiHelper
      *
      * @return bool
      */
-    private function checkIfCsvExists() {
-        return file_exists($this->csv_filename_session);
+    private function checkIfCsvExists($filename) {
+        return file_exists($filename);
     }
 
     /**
@@ -221,23 +235,36 @@ class ApiHelper
     private function prepareCsvFile() {
         $csv_header_logo = LogoGenerator::logoData('id', 'session_id', 'image_type', 'logo_left', 'logo_right', 'logo_right_second', 'color');
         $csv_header_claim = LogoGenerator::claimData('id', 'session_id', 'image_type', 'logo_left', 'logo_right', 'logo_right_second', 'claim_left', 'claim_right', 'color');
+        $csv_header_share = LogoGenerator::shareData('id', 'session_id', 'logo_left', 'logo_right', 'logo_right_second', 'claim_left', 'claim_right', 'color');
         $csv_header_session = LogoGenerator::sessionData('session_id', 'time');
 
         if (!file_exists('csv')) {
             mkdir('csv', 0755, true);
         }
 
-        $file = new SplFileObject($this->csv_filename_session, 'a');
-        $file->fputcsv($csv_header_session, $this->csv_separator);
-        $file = null;
+        if (!file_exists($this->csv_filename_session)) {
+            $file = new SplFileObject($this->csv_filename_session, 'a');
+            $file->fputcsv($csv_header_session, $this->csv_separator);
+            $file = null;
+        }
 
-        $file = new SplFileObject($this->csv_filename_logo, 'a');
-        $file->fputcsv($csv_header_logo, $this->csv_separator);
-        $file = null;
+        if (!file_exists($this->csv_filename_logo)) {
+            $file = new SplFileObject($this->csv_filename_logo, 'a');
+            $file->fputcsv($csv_header_logo, $this->csv_separator);
+            $file = null;
+        }
 
-        $file = new SplFileObject($this->csv_filename_claim, 'a');
-        $file->fputcsv($csv_header_claim, $this->csv_separator);
-        $file = null;
+        if (!file_exists($this->csv_filename_claim)) {
+            $file = new SplFileObject($this->csv_filename_claim, 'a');
+            $file->fputcsv($csv_header_claim, $this->csv_separator);
+            $file = null;
+        }
+
+        if (!file_exists($this->csv_filename_share)) {
+            $file = new SplFileObject($this->csv_filename_share, 'a');
+            $file->fputcsv($csv_header_share, $this->csv_separator);
+            $file = null;
+        }
     }
 
     private function generateId() {
@@ -257,9 +284,10 @@ class ApiHelper
      * @param $id
      */
     private function saveId($id) {
-        if (!$this->checkIfCsvExists()) {
+        if (!$this->checkIfCsvExists($this->csv_filename_session)) {
             $this->prepareCsvFile();
         }
+
         $time = time();
         $entry = LogoGenerator::sessionData(
             $id,
@@ -341,15 +369,40 @@ class ApiHelper
         $file = null;
     }
 
+    function saveDataShare($data) {
+        if (!$this->checkIfCsvExists($this->csv_filename_share)) {
+            $this->prepareCsvFile();
+        }
+
+        $id = $this->getLatestId($this->csv_filename_share);
+
+        $shareData = LogoGenerator::shareData(
+            $id,
+            $data['session_id'],
+            $data['logo_left'],
+            $data['logo_right'],
+            $data['logo_right_second'],
+            $data['claim_left'],
+            $data['claim_right'],
+            $data['color']
+        );
+
+        $file = new SplFileObject($this->csv_filename_share, 'a');
+        $file->fputcsv($shareData, $this->csv_separator);
+        $file = null;
+    }
+
     function adminGetVisitors() {
         $sessionData = $this->getSessionTimestamps();
         $sessionIdCounter = $sessionData['line_count'] - 2;
         $claimCounter = $this->countFileLines('../' . $this->csv_filename_claim) - 2;
         $logoCounter = $this->countFileLines('../' . $this->csv_filename_logo) - 2;
+        $shareCounter = $this->countFileLines('../' . $this->csv_filename_share) - 2;
         return [
             'session' => $sessionIdCounter,
             'claim' => $claimCounter,
             'logo' => $logoCounter,
+            'share' => $shareCounter,
             'timestamps' => $sessionData['timestamps'],
         ];
     }

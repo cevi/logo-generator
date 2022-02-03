@@ -29,6 +29,7 @@
     $input_logo['right-second'] = '';
     $claim['left'] = 'VIELFALT GEMEINSAM';
     $claim['right'] = ' ERLEBEN.';
+    $color = 'web';
 
     $api_helper = new ApiHelper();
     $id = $api_helper->getNewSessionId();
@@ -43,6 +44,10 @@
         if (isset($_GET['claim-' . $key])) {
             $claim[$key] = $_GET['claim-' . $key];
         }
+    }
+
+    if (isset($_GET['color'])) {
+        $color = $_GET['color'];
     }
 ?>
 
@@ -87,19 +92,19 @@
                 <legend>Farben für die Ausgabe</legend>
                 <div>
                     <input type="radio" id="web"
-                           name="color" value="web" checked />
+                           name="color" value="web" <?php if ($color === 'web') { echo 'checked'; } ?> />
                     <label class="-radio" for="web">RGB (Web / Online)</label>
                 </div>
 
                 <div>
                     <input type="radio" id="print"
-                           name="color" value="print" />
+                           name="color" value="print" <?php if ($color === 'print') { echo 'checked'; } ?> />
                     <label class="-radio" for="print">CMYK (Druck / Druckerei)</label>
                 </div>
 
                 <div>
                     <input type="radio" id="black"
-                           name="color" value="black" />
+                           name="color" value="black" <?php if ($color === 'black') { echo 'checked'; } ?> />
                     <label class="-radio" for="black">Schwarz</label>
                 </div>
             </div>
@@ -112,6 +117,7 @@
             <div class="svgwrapper" id="svg-logo-output"></div>
             <div class="linkwrapper">
                 <a class="link" href="#" target="_blank" id="svg-logo-link" download="logo.svg">Download SVG Logo</a>
+                <a class="link -share js-share-link" href="#" target="_blank">Share SVG Logo</a>
             </div>
         </div>
 
@@ -122,6 +128,7 @@
             <img src="#" alt="Logo Ausgabe im Format PNG" id="png-logo-output"/>
             <div class="linkwrapper">
                 <a class="link" href="#" target="_blank" id="png-logo-link" download="logo.png">Download PNG Logo</a>
+                <a class="link -share js-share-link" href="#" target="_blank">Share PNG Logo</a>
             </div>
         </div>
 
@@ -132,6 +139,7 @@
             <img src="#" alt="Logo Ausgabe im Format JPG" id="jpg-logo-output"/>
             <div class="linkwrapper">
                 <a class="link" href="#" target="_blank" id="jpg-logo-link" download="logo.jpg">Download JPG Logo</a>
+                <a class="link -share js-share-link" href="#" target="_blank">Share JPG Logo</a>
             </div>
         </div>
 
@@ -143,7 +151,8 @@
             <div class="info">SVG Claim (Vektorgrafik)</div>
             <div class="svgwrapper" id="svg-claim-output"></div>
             <div class="linkwrapper">
-                <a class="link" href="#" target="_blank" id="svg-claim-link" download="claim.svg">→</a>
+                <a class="link" href="#" target="_blank" id="svg-claim-link" download="claim.svg">Download SVG Claim</a>
+                <a class="link -share js-share-link" href="#" target="_blank">Share SVG Claim</a>
             </div>
         </div>
 
@@ -153,7 +162,8 @@
             </div>
             <img src="#" alt="Claim Ausgabe im Format PNG" id="png-claim-output"/>
             <div class="linkwrapper">
-                <a class="link" href="#" target="_blank" id="png-claim-link" download="claim.png">→</a>
+                <a class="link" href="#" target="_blank" id="png-claim-link" download="claim.png">Download PNG Claim</a>
+                <a class="link -share js-share-link" href="#" target="_blank">Share PNG Claim</a>
             </div>
         </div>
 

@@ -178,7 +178,16 @@
                 </div>
 
                 <div class="row">
-                    <div class="col"></div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header pb-0">
+                                <h6 class="mb-0 mt-2">Shares</h6>
+                            </div>
+                            <div class="card-body d-flex flex-column justify-content-end">
+                                <div class="fs-1 text-700 lh-1 mb-1"><?php echo $visitors['share']; ?></div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col">
                         <div class="card mt-4">
                             <canvas class="my-4" id="logo-chart" width="50" height="50"></canvas>

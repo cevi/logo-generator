@@ -10,6 +10,10 @@
         "max-len": ["error", 160, 2, {
             "ignoreUrls": true,
             "ignoreComments": false
+        }],
+        "prefer-destructuring": ["error", {
+            "array": false,
+            "object": false
         }]
     }
 }

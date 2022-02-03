@@ -48,9 +48,19 @@
 
     $type = $_POST['type'];
 
-    if (!isset($_POST['image_type']) || !isset($_POST['logo_left']) || !isset($_POST['logo_right']) || !isset($_POST['logo_right_second'])) {
+    if (!isset($_POST['logo_left']) || !isset($_POST['logo_right']) || !isset($_POST['logo_right_second'])) {
         http_response_code(400);
         echo '[3] data is missing.';
+        return;
+    }
+
+    if ($type === 'share' && isset($_POST['claim_left']) && isset($_POST['claim_right'])) {
+        $apiHelper->saveDataShare($_POST);
+    }
+
+    if (!isset($_POST['image_type'])) {
+        http_response_code(400);
+        echo '[4] data is missing.';
         return;
     }
 
@@ -61,7 +71,7 @@
     else if ($type === 'claim') {
         if (!isset($_POST['claim_left']) || !isset($_POST['claim_right'])) {
             http_response_code(400);
-            echo '[4] data is missing.';
+            echo '[5] data is missing.';
             return;
         }
 
