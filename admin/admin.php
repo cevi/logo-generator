@@ -179,7 +179,7 @@
 
                 <div class="row">
                     <div class="col">
-                        <div class="card">
+                        <div class="card mt-4">
                             <div class="card-header pb-0">
                                 <h6 class="mb-0 mt-2">Shares</h6>
                             </div>
