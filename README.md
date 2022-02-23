@@ -14,6 +14,7 @@ Possible GET-Parameter:
 - `logo-right-second`
 - `claim-left`
 - `claim-right`
+- `color=[web|print|black]`
 
 ## Use it on your website
 
