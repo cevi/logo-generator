@@ -3,3 +3,9 @@
     deny from all
     satisfy all
 </Files>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI} \.svg$ [NC]
+    RewriteRule ^(.*)$ logo.php?name=$1 [L,QSA]
+</IfModule>

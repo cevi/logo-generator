@@ -16,7 +16,15 @@ Possible GET-Parameter:
 - `claim-right`
 - `color=[web|print|black]`
 
-## Use it on your website
+## Get directly the logo
+
+You can get your logo directly from our website:
+
+[https://logo.cevi.ch/logo.svg?left=LOGO&right=GENERATOR](https://logo.cevi.ch/logo.svg?left=LOGO&right=GENERATOR)
+
+![https://logo.cevi.ch/logo.svg?left=LOGO&right=GENERATOR](https://logo.cevi.ch/logo.svg?left=LOGO&right=GENERATOR)
+
+## Use the generator on your website
 
 You can add the logo-generator to your website via an iframe:
 

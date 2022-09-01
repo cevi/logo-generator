@@ -1,0 +1,118 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "7f2d2f93049db2cbbe0d643c3fd5e576",
+    "packages": [
+        {
+            "name": "kartsims/easysvg",
+            "version": "2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartsims/easysvg.git",
+                "reference": "c105955d9da6226a681120bcce7cdcc0e6c1d8e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartsims/easysvg/zipball/c105955d9da6226a681120bcce7cdcc0e6c1d8e3",
+                "reference": "c105955d9da6226a681120bcce7cdcc0e6c1d8e3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-simplexml": "*",
+                "ext-xmlreader": "*",
+                "php": ">=7.4.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.5"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Simon Tarchichi",
+                    "email": "kartsims@gmail.com"
+                }
+            ],
+            "description": "PHP library to generate SVG XML",
+            "homepage": "https://github.com/kartsims/easysvg",
+            "support": {
+                "issues": "https://github.com/kartsims/easysvg/issues",
+                "source": "https://github.com/kartsims/easysvg/tree/master"
+            },
+            "time": "2022-02-21T09:22:32+00:00"
+        },
+        {
+            "name": "meyfa/php-svg",
+            "version": "v0.11.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/meyfa/php-svg.git",
+                "reference": "a3588b16a65258c95b49b054ef143d0e7ddb44fe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/meyfa/php-svg/zipball/a3588b16a65258c95b49b054ef143d0e7ddb44fe",
+                "reference": "a3588b16a65258c95b49b054ef143d0e7ddb44fe",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "meyfa/phpunit-assert-gd": "^1.2",
+                "phpmd/phpmd": "@stable",
+                "phpunit/phpunit": "^4.8"
+            },
+            "suggest": {
+                "ext-gd": "Needed to rasterize images",
+                "ext-simplexml": "Needed to read SVG strings and files"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SVG\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabian Meyer",
+                    "homepage": "http://meyfa.net"
+                }
+            ],
+            "description": "Read, edit, write, and render SVG files with PHP",
+            "homepage": "https://github.com/meyfa/php-svg",
+            "keywords": [
+                "svg"
+            ],
+            "support": {
+                "issues": "https://github.com/meyfa/php-svg/issues",
+                "source": "https://github.com/meyfa/php-svg/tree/v0.11.3"
+            },
+            "time": "2022-02-18T11:53:57+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
+}

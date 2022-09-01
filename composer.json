@@ -1,0 +1,6 @@
+{
+    "require": {
+        "meyfa/php-svg": "^0.11.3",
+        "kartsims/easysvg": "^2.4"
+    }
+}

@@ -2,6 +2,7 @@
 node_modules
 assets
 csv
+vendor
 
 # PHP
 admin/.env
