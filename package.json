@@ -1,6 +1,6 @@
 {
   "name": "cevi-logo",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Logo Generator for Cevi Schweiz",
   "main": "js/App.js",
   "scripts": {

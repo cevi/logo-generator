@@ -11,6 +11,7 @@ export default class Logo {
     constructor() {
         const self = this;
 
+        this.testModeOn = false;
         this.claimData = null;
         this.$generator = null;
         this.textToSvg = null;
@@ -59,13 +60,13 @@ export default class Logo {
         const widthHalfChar = 16;
 
         // The Claim Text
-        const claimTextLeft = this.generateText(this.textClaimLeft, 110, claimBoxMargin + claimBoxPaddingLeft, claimBoxMargin + claimBoxPaddingTop);
-        const textClaim = `${this.textClaimLeft}${this.textClaimRight}`;
-        const claimText = this.generateText(textClaim, 110, claimBoxMargin + claimBoxPaddingLeft, claimBoxMargin + claimBoxPaddingTop);
+        const claimTextLeftGenerated = this.generateText(this.textClaimLeft, 110, claimBoxMargin + claimBoxPaddingLeft, claimBoxMargin + claimBoxPaddingTop);
+        const textClaimFull = `${this.textClaimLeft}${this.textClaimRight}`;
+        const claimTextGenerated = this.generateText(textClaimFull, 110, claimBoxMargin + claimBoxPaddingLeft, claimBoxMargin + claimBoxPaddingTop);
 
         // The Claim Sizes
-        const claimTextLeftWidth = this.getPathWidth(claimTextLeft, this.textClaimLeft);
-        const claimTextWidth = this.getPathWidth(claimText, textClaim);
+        const claimTextLeftWidth = this.getPathWidth(claimTextLeftGenerated, this.textClaimLeft);
+        const claimTextWidth = this.getPathWidth(claimTextGenerated, textClaimFull);
         const claimBoxWidth = claimTextWidth + (claimBoxPaddingLeft * 2);
 
         // The Logo Text & Icon
@@ -129,11 +130,25 @@ export default class Logo {
             startLogo = triangleCenter - 120;
         }
 
-        const endLogo = startLogo + logoBoxWidth;
+        if (this.testModeOn) {
+            console.log(`startLogo: ${startLogo}`);
+            console.log(`logoBoxWidth: ${logoBoxWidth}`);
+            console.log(`claimBoxWidth: ${claimBoxWidth}`);
+        }
+
+        if (startLogo < claimBoxPaddingLeft) {
+            // @see https://github.com/cevi/logo-generator/issues/16
+            // if startLogo < 0, p.e. -200, startLogo needs to be claimBoxPaddingLeft, means: 50. difference = 250
+            // if 0 < startLogo < claimBoxPaddingLeft, p.e. 20, startLogo needs to be 50. difference = 30
+            const difference = startLogo >= 0 ? claimBoxPaddingLeft - startLogo : startLogo * -1 + claimBoxPaddingLeft;
+            startLogo += difference;
+        }
+
+        const endOfLogo = startLogo + logoBoxWidth;
 
         // If imageWidth is smaller than the endLogo, adjust it.
-        if (imageWidth < endLogo + claimBoxMargin) {
-            imageWidth = endLogo + claimBoxMargin;
+        if (imageWidth < endOfLogo + claimBoxMargin) {
+            imageWidth = endOfLogo + claimBoxMargin;
         }
 
         // Generate SVG
@@ -141,10 +156,10 @@ export default class Logo {
 
         // Claim
         svg += `<polygon fill="#FFFFFF" points="${claimBoxWidth + claimBoxMargin},208 ${triangleCenter + 32},208 ${triangleCenter},158 ${triangleCenter - 32},208 ${claimBoxMargin},208 ${claimBoxMargin},${claimBoxMargin} ${claimBoxWidth + claimBoxMargin},${claimBoxMargin}"/>`; // eslint-disable-line max-len
-        svg += claimText;
+        svg += claimTextGenerated;
 
         // Logo
-        svg += `<polygon fill="#FFFFFF" points="${endLogo},400 ${startLogo},400 ${startLogo},222 ${triangleCenter - 24},222 ${triangleCenter},185 ${triangleCenter + 24},222 ${endLogo},222"/>`; // eslint-disable-line max-len
+        svg += `<polygon fill="#FFFFFF" points="${endOfLogo},400 ${startLogo},400 ${startLogo},222 ${triangleCenter - 24},222 ${triangleCenter},185 ${triangleCenter + 24},222 ${endOfLogo},222"/>`; // eslint-disable-line max-len
 
         if (logoShowIcon) {
             const startIcon = startLogo + logoTextPadding + logoTextLeftWidth + (logoTextPadding / 2);
