@@ -1,4 +1,4 @@
-/* global document, window, fetch, FormData */
+/* global document, window, FormData */
 
 export default class ApiLinks {
     async postData(url = '/api.php', data = {}) { // eslint-disable-line class-methods-use-this
