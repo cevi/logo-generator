@@ -6,6 +6,9 @@
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
+    RewriteRule ^assets/(.*) - [END]
+
     RewriteCond %{REQUEST_URI} \.svg$ [NC]
     RewriteRule ^(.*)$ logo.php?name=$1 [L,QSA]
 </IfModule>
