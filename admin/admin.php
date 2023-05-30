@@ -16,27 +16,29 @@
     function readSessionTimestampDates($timestamps) {
         arsort($timestamps);
         $currentTime = time();
-        $currentMonth = date("Y - m", $currentTime);
-        $lastMonth = $currentMonth;
+        $currentYear = date("Y");
         $dates = [];
-        $dates[$currentMonth] = 0;
+
+        for ($i = 1; $i <= 12; $i++) {
+            $m = $i;
+            if ($m < 10) {
+                $m = '0' . $i;
+            }
+            $dates[$currentYear . " - " . $m] = 0;
+        }
 
         foreach ($timestamps as $timestamp) {
             $month = date("Y - m", $timestamp);
-            $compare = $month;
 
             if (!isset($dates[$month])) {
-                while ($lastMonth != $compare) {
-                    $compareTimestamp = DateTime::createFromFormat('Y - m', $compare)->getTimestamp();
-                    // add 32 days to the compare-date to change months.
-                    $compare = date("Y - m", ($compareTimestamp + 2764800));
-                    if (!isset($dates[$compare])) {
-                        $dates[$compare] = 0;
+                $yearThen = date("Y", $timestamp);
+                for ($i = 1; $i <= 12; $i++) {
+                    $m = $i;
+                    if ($m < 10) {
+                        $m = '0' . $i;
                     }
+                    $dates[$yearThen . " - " . $m] = 0;
                 }
-
-                $dates[$month] = 0;
-                $lastMonth = $month;
             }
 
             // count up this month.

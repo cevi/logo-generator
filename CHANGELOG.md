@@ -5,6 +5,7 @@ Was wurde in welcher Version angepasst.
 ## 1.5.0
 
 - Abstand bei zweizeiligen Logos vergrössern [#14](/../../issues/14)
+- Admin-Seite geflickt: dashboard mit korrekten Daten versehen [#5](/../../issues/5)
 - Changelog erschaffen
 
 ## 1.4.2
