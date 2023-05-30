@@ -210,8 +210,8 @@ export default class Logo {
             let logoTextRightSecondWidth = 0;
 
             if (this.textLogoRightSecond !== '') {
-                logoTextRight = this.generateText(this.textLogoRight, 48, logoTextPadding + logoTextLeftWidth + iconWidth + logoTextPadding, 83.5);
-                logoTextRightSecond = this.generateText(this.textLogoRightSecond, 48, logoTextPadding + logoTextLeftWidth + iconWidth + logoTextPadding, 127.5);
+                logoTextRight = this.generateText(this.textLogoRight, 46, logoTextPadding + logoTextLeftWidth + iconWidth + logoTextPadding, 82.75);
+                logoTextRightSecond = this.generateText(this.textLogoRightSecond, 46, logoTextPadding + logoTextLeftWidth + iconWidth + logoTextPadding, 127.5);
                 logoTextRightSecondWidth = this.getPathWidth(logoTextRightSecond, this.textLogoRightSecond);
             } else {
                 logoTextRight = this.generateText(this.textLogoRight, 110, logoTextPadding + logoTextLeftWidth + iconWidth + logoTextPadding, 127.5);
