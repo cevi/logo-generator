@@ -2,43 +2,6 @@
 // Define your global functions in here!
 // -----------------------------------------------------------------------------
 
-/// Converts a list/map into a string by using a pattern for each entry and a
-/// separator for glueing.
-/// @author Gridonic
-/// @param {String} $input - Input map/list to stringify
-/// @param {Map} $options [(pattern: "%key: %value", separator: ", ")]- Options for adjusting how to stringify
-/// @return {String}
-@function stringify($input, $options) {
-    $pattern: if(map-has-key($options, "pattern"), map-get($options, "pattern"), "%key: %value");
-    $separator: if(map-has-key($options, "separator"), map-get($options, "separator"), ", ");
-    $result: "";
-
-    @for $i from 1 through length($input) {
-        $item: nth($input, $i);
-        $key: nth($item, 1);
-        $value: if(length($item) > 1, nth($item, 2), "");
-        $temp: str-replace($pattern, "%key", $key);
-        $temp: str-replace($temp, "%value", $value);
-        $result: $result + $temp + if($i < length($input), $separator, "");
-    }
-
-    @return $result;
-}
-
-/// Replace `$search` with `$replace` in `$string`
-/// @author Hugo Giraudel
-/// @param {String} $string - Initial string
-/// @param {String} $search - Substring to replace
-/// @param {String} $replace [""] - New value
-/// @return {String} - Updated string
-@function str-replace($string, $search, $replace: "") {
-    $index: str-index($string, $search);
-
-    @if $index {
-        @return str-slice($string, 1, $index - 1)
-            + $replace
-            + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
-    }
-
-    @return $string;
+@function --vertical-base($line-height: 1) {
+    @return $line-height * $base-line-height;
 }

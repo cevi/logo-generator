@@ -1,14 +1,14 @@
 /*!-----------------------------------------------------------------------------
    Master Stylesheet.
 
-   Project:       Cevi Logo
-   Version:       1.1.0
+   Project:       Cevi Logo Generator
+   Version:       1.4.2
    Contributors:  Beat Temperli v/o Zottel
    URL:           https://logo.cevi.ch
    License:       ISC
    -------------------------------------------------------------------------- */
 
-@import "src/sass/meta";
-@import "src/sass/shared";
-@import "src/sass/components";
-@import "src/sass/exceptions";
+@import "meta/index";
+@import "shared/index";
+@import "components/index";
+@import "exceptions/index";

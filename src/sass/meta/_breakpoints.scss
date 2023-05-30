@@ -30,7 +30,10 @@ Resolution relative settings. Excerpt from Google web fundamentals:<sup>[1]</sup
 Currently defined breakpoints:
 
 ```yaml
-#{stringify($breakpoints, (separator: "\a"))}
+ - 320px
+ - 768px
+ - 1024px
+ - 1440px
 ```
 
 [1]: https://developers.google.com/web/fundamentals/design-and-ui/responsive/#how-to-choose-breakpoints

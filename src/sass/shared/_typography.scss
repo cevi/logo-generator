@@ -93,7 +93,7 @@ section {
 
 body {
     color: $color-black;
-    line-height: vertical-base();
+    line-height: --vertical-base();
 }
 
 p {
@@ -160,35 +160,35 @@ h6,
 h1,
 .h1 {
     font-size: 2.25rem;
-    line-height: vertical-base(2.5);
+    line-height: --vertical-base(2.5);
 }
 
 h2,
 .h2 {
     font-size: 2rem;
-    line-height: vertical-base(2);
+    line-height: --vertical-base(2);
 }
 
 h3,
 .h3 {
     font-size: 1.5rem;
-    line-height: vertical-base(1.5);
+    line-height: --vertical-base(1.5);
 }
 
 h4,
 .h4 {
     font-size: 1.25rem;
-    line-height: vertical-base(1.25);
+    line-height: --vertical-base(1.25);
 }
 
 h5,
 .h5 {
     font-size: 1.125rem;
-    line-height: vertical-base(1);
+    line-height: --vertical-base(1);
 }
 
 h6,
 .h6 {
     font-size: 1rem;
-    line-height: vertical-base(1);
+    line-height: --vertical-base(1);
 }
