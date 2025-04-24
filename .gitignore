@@ -3,6 +3,7 @@ node_modules
 assets
 csv
 vendor
+styleguide
 
 # PHP
 admin/.env

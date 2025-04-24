@@ -1,6 +1,10 @@
 // -----------------------------------------------------------------------------
 // Base styles.
 // -----------------------------------------------------------------------------
+
+@use "../meta/variables";
+@use "../meta/mixins";
+
 :root {
     box-sizing: border-box;
 }
@@ -22,17 +26,17 @@ body {
 }
 
 .main-content {
-    padding-top: $base-header-height;
+    padding-top: variables.$base-header-height;
 
     &.-showmenu {
-        padding-left: $page-padding;
-        padding-right: $page-padding;
-        padding-top: $base-header-height + $page-padding;
+        padding-left: variables.$page-padding;
+        padding-right: variables.$page-padding;
+        padding-top: variables.$base-header-height + variables.$page-padding;
         width: 100%;
 
-        @include media(">=large") {
+        @include mixins.mq-min("large") {
             width: 80%;
-            padding-left: calc((100% / 3) + #{$page-padding + 6px});
+            padding-left: calc((100% / 3) + #{variables.$page-padding + 6px});
         }
     }
 

@@ -2,6 +2,8 @@
 // Define your global functions in here!
 // -----------------------------------------------------------------------------
 
+@use "variables";
+
 @function --vertical-base($line-height: 1) {
-    @return $line-height * $base-line-height;
+    @return $line-height * variables.$base-line-height;
 }

@@ -1,28 +1,26 @@
-/*
----
-name: Link
-tag:
-  - link
-category:
-  - shared
-  - shared/link
-sourcePath: /shared/_link.scss
----
+// Link
+//
+// Base styles for all the links.
+//
+// Markup:
+// <p>
+// Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed <a href="#">diam nonumy eirmod</a> tempor invidunt.
+// <br>ut labore et dolore magna <a href="#" class="-obfuscated">link with class -obfuscated</a> erat.
+// <br>ut labore et dolore magna <a href="#" class="-phone">link with class -phone</a> erat.
+// <br>sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+// </p>
+//
+// Style guide: shared.link
 
-```html
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-At vero eos et accusam et <a href="#">lorem</a> rebum. Stet clita kasd gubergren,
-no sea takimata sanctus um.
-```
-*/
+@use "../meta/mixins";
+@use "../meta/variables";
 
 p a { // stylelint-disable-line rscss/no-descendant-combinator
     padding-left: 22px;
     position: relative;
 
     &::before {
-        @include fa-icon;
+        @include mixins.fa-icon;
 
         content: "\f0c1"; // Font Awesome-icon link
         position: absolute;
@@ -46,14 +44,14 @@ p a { // stylelint-disable-line rscss/no-descendant-combinator
     &,
     &:link,
     &:visited {
-        color: $color-secondary;
+        color: variables.$color-secondary;
         text-decoration: none;
     }
 
     &:hover,
     &:focus,
     &:active {
-        color: $color-primary;
+        color: variables.$color-primary;
         text-decoration: none;
     }
 }

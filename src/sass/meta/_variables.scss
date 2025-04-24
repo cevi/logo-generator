@@ -1,0 +1,75 @@
+// Base font family.
+$base-font-family: "Lora", serif !default;
+
+// Base font size. Will be used in :root as font-size.
+$base-font-size: 16px !default;
+$base-font-size-mobile: 14px !default;
+$base-font-size-small: 12px !default;
+
+// Base headline font family.
+$base-headline-family: "Montserrat", sans-serif !default;
+
+// Base headline text rendering.
+// @see https://developer.mozilla.org/en/docs/Web/CSS/text-rendering
+$base-headline-rendering: optimizelegibility !default;
+
+// Base line-height, also represents the vertical-base unit.
+$base-line-height: 1.375rem !default;
+
+// Base quote font family.
+$base-quote-family: "Lora", serif !default;
+
+$base-transition-speed: 300ms;
+
+$base-header-height: 60px;
+
+$base-vertical-margin: 2rem * 0.7145; // 20px mobile, 22px desktop
+$base-horizontal-margin: 2rem * 0.7145;
+
+// Page-padding
+$page-padding: 20px;
+
+// Font-awesome overrides
+$fa-font-path: "/assets/fonts/fontawesome";
+
+// Cevi styles
+$cevi-line-size: 20px;
+
+// breakpoints
+$breakpoint_small: 320px;
+$breakpoint_medium: 768px;
+$breakpoint_large: 1024px;
+$breakpoint_huge: 1440px;
+
+// colors
+$color-emerald: #28c76f;
+$color-carnation: #ea5455;
+$color-dodger-blue: #0396ff;
+$color-candlelight: #f8d800;
+
+$color-crimson: #c41333;
+$color-chambray: #333791;
+$color-black: #000;
+$color-white: #fff;
+$color-gallery: #ebebeb;
+$color-masala: #474645;
+$color-silver-chalice: #aeaeae;
+
+$color-foreground: $color-black;
+$color-background: $color-white;
+$color-background-hover: $color-gallery;
+$color-background-hover-transparent: rgba($color-background-hover, 0.8);
+$color-background-hover-transparent-mobile: rgba($color-background-hover, 0.975);
+$color-secondary: $color-masala;
+$color-secondary-light: $color-silver-chalice;
+$color-secondary-contrast: $color-white;
+$color-primary: $color-crimson;
+$color-primary-contrast: $color-white;
+$color-primary-background: rgba($color-crimson, 0.25);
+$color-active: $color-chambray;
+$color-active-contrast: $color-white;
+$color-active-background: rgba($color-chambray, 0.25);
+
+// taken from node_modules/font-awesome
+$fa-font-size-base:   14px !default;
+$fa-line-height-base: 1 !default;

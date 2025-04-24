@@ -1,40 +1,34 @@
-/*
----
-name: Typography
-tag:
-  - typography
-category:
-  - shared
-  - shared/typography
-sourcePath: /shared/_typography.scss
----
-
-The base *font-family* is `#{$base-font-family}` and the base *font-size* is
-`#{$base-font-size}`. The base *line-height*, which is also the *vertical
-rhythm* base<sup>[1]</sup> unit, is `#{$base-line-height}`.
-
-The best way to implement a responsive typography is by adjusting the
-`font-size` within the `:root` element. This will also make sure that the
-vertical rhythm adapts to the new font-size.
-
-For your information the following `font-weight` values roughly correspond to
-the commonly used weight names below.<sup>[2]</sup>
-
-```html
-100: <span style="font-weight: 100">Thin</span><br>
-200: <span style="font-weight: 200">Extra Light (Ultra Light)</span><br>
-300: <span style="font-weight: 300">Light</span><br>
-400: <span style="font-weight: 400">Normal</span><br>
-500: <span style="font-weight: 500">Medium</span><br>
-600: <span style="font-weight: 600">Semi Bold (Demi Bold)</span><br>
-700: <span style="font-weight: 700">Bold</span><br>
-800: <span style="font-weight: 800">Extra Bold (Ultra Bold)</span><br>
-900: <span style="font-weight: 900">Black (Heavy)</span>
-```
-
-[1]: https://zellwk.com/blog/why-vertical-rhythms/
-[2]: http://www.w3.org/TR/css3-fonts/#font-weight-prop
-*/
+// Typography
+//
+// Base styles for all the texts.
+//
+// Markup:
+// <p>
+// The base *font-family* is `#{variables.$base-font-family}` and the base *font-size* is
+// `#{variables.$base-font-size}`. The base *line-height*, which is also the *vertical
+// rhythm* base<sup>[1]</sup> unit, is `#{variables.$base-line-height}`.
+// </p>
+// <p class="margin-top-2">Font-Weight</p>
+// 100: <span style="font-weight: 100">Thin</span><br>
+// 200: <span style="font-weight: 200">Extra Light (Ultra Light)</span><br>
+// 300: <span style="font-weight: 300">Light</span><br>
+// 400: <span style="font-weight: 400">Normal</span><br>
+// 500: <span style="font-weight: 500">Medium</span><br>
+// 600: <span style="font-weight: 600">Semi Bold (Demi Bold)</span><br>
+// 700: <span style="font-weight: 700">Bold</span><br>
+// 800: <span style="font-weight: 800">Extra Bold (Ultra Bold)</span><br>
+// 900: <span style="font-weight: 900">Black (Heavy)</span>
+// </p>
+// <p class="margin-top-2">Titles</p>
+// <h1 class="h1">h1: The quick brown fox jumps over the lazy dog.</h1>
+// <h2 class="h2">h2: Pack my box with five dozen liquor jugs.</h2>
+// <h3 class="h3">h3: Jackdaws love my big sphinx of quartz.</h3>
+// <h4 class="h4">h4: Five quacking Zephyrs jolt my wax bed.</h4>
+// <h5 class="h5">h5: The five boxing wizards jump quickly.</h5>
+// <h6 class="h6">h6: Sphinx of black quartz judge my vow.</h6>
+//
+// Style guide: shared.typography
+//
 
 /*
 ---
@@ -81,18 +75,22 @@ section {
 ```
 
 */
+
+@use "../meta/variables";
+@use "../meta/mixins";
+
 :root {
-    font-family: $base-font-family;
-    font-size: $base-font-size-mobile;
+    font-family: variables.$base-font-family;
+    font-size: variables.$base-font-size-mobile;
 
     // Use responsive typography and adjust vertical rhythm at the same time
-    @include media(">=large") {
-        font-size: $base-font-size;
+    @include mixins.mq-min("large") {
+        font-size: variables.$base-font-size;
     }
 }
 
 body {
-    color: $color-black;
+    color: variables.$color-black;
     line-height: --vertical-base();
 }
 
@@ -104,11 +102,11 @@ p {
 input,
 select,
 textarea {
-    font-family: $base-font-family;
-    font-size: $base-font-size-mobile;
+    font-family: variables.$base-font-family;
+    font-size: variables.$base-font-size-mobile;
 
-    @include media(">=large") {
-        font-size: $base-font-size;
+    @include mixins.mq-min("large") {
+        font-size: variables.$base-font-size;
     }
 }
 
@@ -124,7 +122,7 @@ category:
 sourcePath: /shared/_typography.scss
 ---
 
-The font-family for headlines is `#{$base-headline-family}`. All `h{1..6}`-Tags
+The font-family for headlines is `#{variables.$base-headline-family}`. All `h{1..6}`-Tags
 are formatted and ready for usage. Use the `h{1..6}` classes if you need to
 style non-headline markup as headlines.
 
@@ -150,11 +148,11 @@ h5,
 .h5,
 h6,
 .h6 {
-    @include headline;
+    @include mixins.headline;
 
     margin-bottom: 0;
     margin-top: 0;
-    text-rendering: $base-headline-rendering;
+    text-rendering: variables.$base-headline-rendering;
 }
 
 h1,

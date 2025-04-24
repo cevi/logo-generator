@@ -8,7 +8,7 @@
    License:       ISC
    -------------------------------------------------------------------------- */
 
-@import "meta/index";
-@import "shared/index";
-@import "admin/index";
-@import "exceptions/index";
+@use "meta/meta";
+@use "shared/shared";
+@use "admin/admin";
+@use "exceptions/exceptions";

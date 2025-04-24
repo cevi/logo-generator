@@ -1,16 +1,46 @@
 // -----------------------------------------------------------------------------
 // Define your global mixins in here!
 // -----------------------------------------------------------------------------
+@use "variables";
+
 @mixin headline() {
-    font-family: $base-headline-family;
+    font-family: variables.$base-headline-family;
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 1px;
 }
 
 @mixin paragraph() {
-    font-family: $base-font-family;
+    font-family: variables.$base-font-family;
     text-transform: none;
     font-weight: 400;
     letter-spacing: 0;
+}
+
+@mixin mq-min($media) {
+    @if $media == 'small' {
+        @media (min-width: variables.$breakpoint_small) { @content; }
+    }
+
+    @else if $media == 'medium' {
+        @media (min-width: variables.$breakpoint_medium) { @content; }
+    }
+
+    @else if $media == 'large' {
+        @media (min-width: variables.$breakpoint_large) { @content; }
+    }
+
+    @else if $media == 'huge' {
+        @media (min-width: variables.$breakpoint_huge) { @content; }
+    }
+}
+
+// @see node_modules/font-awesome
+@mixin fa-icon() {
+    display: inline-block;
+    font: normal normal normal #{variables.$fa-font-size-base}/#{variables.$fa-line-height-base} FontAwesome; // shortening font declaration
+    font-size: inherit; // can't have font-size inherit on line above, so need to override
+    text-rendering: auto; // optimizelegibility throws things off #1094
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }

@@ -12,10 +12,9 @@ of the components you create.
 This for example could be generic typographic definitions, debugging styles or
 basic print styles.
 */
-@import "debug";
-@import "base";
-@import "helper";
-@import "link";
-@import "typography";
-@import "print";
-@import "images";
+@use "base";
+@use "helper";
+@use "link";
+@use "typography";
+@use "print";
+@use "images";

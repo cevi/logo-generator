@@ -1,53 +1,39 @@
-/*
----
-name: Color box
-tag:
-  - components
-  - color
-  - box
-category:
-  - components
-  - components/color
-sourcePath: /components/_color-box.scss
----
+// Color Box
+//
+// More examples on this <a href="https://codepen.io/btemperli/pen/EQwLYG" target="_blank">codepen-snippet</a>.
+//
+// Markup:
+// <div class="color-box -leftarrow">
+//  <div class="left">Left side is red.<br>-leftarrow</div>
+//  <div class="right">Right side is blue.</div>
+// </div>
+// <div class="color-box -switchsize -rightarrow">
+//  <div class="left">Left side is red.<br>-switchsize<br>-rightarrow</div>
+//  <div class="right">Right side is blue.</div>
+// </div>
+// <div class="color-box -switchcolor -leftarrow">
+//  <div class="left">Left side is blue.<br>-switchcolor<br>-leftarrow</div>
+//  <div class="right">Right side is red.</div>
+// </div>
+// <div class="color-box -switchcolor -switchsize -leftarrow">
+//  <div class="left">Left side is blue.<br>-switchcolor<br>-switchsize<br>-leftarrow</div>
+//  <div class="right">Right side is red.</div>
+// </div>
+// <div class="color-box -switchcolor -switchsize -leftarrow">
+//  <div class="left -image" style="background-image: url('http://via.placeholder.com/600x600/22cc99/7700dd')">
+//      Left side is an image.
+//      <br>-switchcolor
+//      <br>-switchsize
+//      <br>-rightarrow
+//  </div>
+//  <div class="right">Right side is red.</div>
+// </div>
+//
+// Style guide: components.color-box
 
-More examples on this <a href="https://codepen.io/btemperli/pen/EQwLYG" target="_blank">codepen-snippet</a>.
+@use "../meta/variables";
 
-```html
-<div class="color-box -leftarrow">
-  <div class="left">Left side is red.<br>-leftarrow</div>
-  <div class="right">Right side is blue.</div>
-</div>
-
-<div class="color-box -switchsize -rightarrow">
-  <div class="left">Left side is red.<br>-switchsize<br>-rightarrow</div>
-  <div class="right">Right side is blue.</div>
-</div>
-
-<div class="color-box -switchcolor -leftarrow">
-  <div class="left">Left side is blue.<br>-switchcolor<br>-leftarrow</div>
-  <div class="right">Right side is red.</div>
-</div>
-
-<div class="color-box -switchcolor -switchsize -leftarrow">
-  <div class="left">Left side is blue.<br>-switchcolor<br>-switchsize<br>-leftarrow</div>
-  <div class="right">Right side is red.</div>
-</div>
-
-<div class="color-box -switchcolor -switchsize -leftarrow">
-  <div class="left -image" style="background-image: url('http://via.placeholder.com/600x600/22cc99/7700dd')">
-      Left side is an image.
-      <br>-switchcolor
-      <br>-switchsize
-      <br>-rightarrow
-  </div>
-  <div class="right">Right side is red.</div>
-</div>
-```
-
-*/
-
-$line-width: $cevi-line-size / 2;
+$line-width: variables.$cevi-line-size / 2;
 $triangle-big-width: 6.4; // 32/5
 $triangle-big-height: 4.32; // 21.6/5
 $triangle-small-width: 4.74; // 23.7/5
@@ -56,22 +42,22 @@ $background-size: auto 125vh;
 
 .color-box {
     padding: 0;
-    margin: $cevi-line-size / 2 0;
+    margin: variables.$cevi-line-size / 2 0;
     height: 280px;
 
     > .right,
     > .left {
         position: relative;
-        color: $color-background;
+        color: variables.$color-background;
         padding: $line-width;
         height: 100%;
         float: left;
 
         a { // stylelint-disable-line rscss/no-descendant-combinator
-            color: $color-background;
+            color: variables.$color-background;
 
             &:hover {
-                color: $color-background-hover;
+                color: variables.$color-background-hover;
             }
         }
 
@@ -93,13 +79,13 @@ $background-size: auto 125vh;
     }
 
     > .left {
-        background-color: $color-primary;
+        background-color: variables.$color-primary;
         width: calc(100% / 3);
         padding-right: $line-width * 2;
     }
 
     > .right {
-        background-color: $color-active;
+        background-color: variables.$color-active;
         width: calc(100% / 3 * 2);
 
         &::before {
@@ -107,7 +93,7 @@ $background-size: auto 125vh;
             content: "";
             height: 100%;
             width: $line-width;
-            background-color: $color-background;
+            background-color: variables.$color-background;
             left: - $line-width;
             top: 0;
         }
@@ -126,7 +112,7 @@ $background-size: auto 125vh;
     &.-leftarrow {
         // White big triangle
         > .right::after {
-            border-right: ($line-width * $triangle-big-width) solid $color-background;
+            border-right: ($line-width * $triangle-big-width) solid variables.$color-background;
             border-top: ($line-width * $triangle-big-height) solid transparent;
             border-bottom: ($line-width * $triangle-big-height) solid transparent;
             left: ($line-width * $triangle-big-width * -1);
@@ -135,7 +121,7 @@ $background-size: auto 125vh;
 
         // Blue smaller triangle
         > .left::after {
-            border-right: ($line-width * $triangle-small-width) solid $color-active;
+            border-right: ($line-width * $triangle-small-width) solid variables.$color-active;
             border-top: ($line-width * $triangle-small-height) solid transparent;
             border-bottom: ($line-width * $triangle-small-height) solid transparent;
             right: 0;
@@ -146,7 +132,7 @@ $background-size: auto 125vh;
     &.-rightarrow {
         // Blue small triangle
         > .right::after {
-            border-left: ($line-width * $triangle-small-width) solid $color-primary;
+            border-left: ($line-width * $triangle-small-width) solid variables.$color-primary;
             border-top: ($line-width * $triangle-small-height) solid transparent;
             border-bottom: ($line-width * $triangle-small-height) solid transparent;
             left: $line-width * -1;
@@ -156,7 +142,7 @@ $background-size: auto 125vh;
         // White bigger triangle
         > .left::after {
             border-right: none;
-            border-left: ($line-width * $triangle-big-width) solid $color-background;
+            border-left: ($line-width * $triangle-big-width) solid variables.$color-background;
             border-top: ($line-width * $triangle-big-height) solid transparent;
             border-bottom: ($line-width * $triangle-big-height) solid transparent;
             right: ($line-width * $triangle-big-width * -1) + $line-width;
@@ -167,22 +153,22 @@ $background-size: auto 125vh;
     &.-changecolor {
         > .left,
         > .right {
-            transition: background-color $base-transition-speed linear;
+            transition: background-color variables.$base-transition-speed linear;
 
             &::after {
                 transition:
-                    border-left-color $base-transition-speed linear,
-                    border-right-color $base-transition-speed linear;
+                    border-left-color variables.$base-transition-speed linear,
+                    border-right-color variables.$base-transition-speed linear;
             }
         }
 
         &:hover {
             > .left {
-                background-color: $color-active;
+                background-color: variables.$color-active;
             }
 
             > .right {
-                background-color: $color-primary;
+                background-color: variables.$color-primary;
             }
         }
     }
@@ -190,59 +176,59 @@ $background-size: auto 125vh;
     // stylelint-disable no-descending-specificity
     &.-switchcolor {
         > .left {
-            background-color: $color-active;
+            background-color: variables.$color-active;
         }
 
         > .right {
-            background-color: $color-primary;
+            background-color: variables.$color-primary;
         }
 
         &.-leftarrow {
             > .left::after {
-                border-right-color: $color-primary;
+                border-right-color: variables.$color-primary;
             }
         }
 
         &.-rightarrow {
             > .right::after {
-                border-left-color: $color-active;
+                border-left-color: variables.$color-active;
             }
         }
 
         &.-changecolor:hover {
             > .left {
-                background-color: $color-primary;
+                background-color: variables.$color-primary;
             }
 
             &.-leftarrow {
                 > .left::after {
-                    border-right-color: $color-active;
+                    border-right-color: variables.$color-active;
                 }
             }
 
             > .right {
-                background-color: $color-active;
+                background-color: variables.$color-active;
 
                 &::after {
-                    border-left-color: $color-primary;
+                    border-left-color: variables.$color-primary;
                 }
             }
 
             &.-rightarrow {
                 > .right::after {
-                    border-left-color: $color-primary;
+                    border-left-color: variables.$color-primary;
                 }
             }
         }
     }
 
     &.-slider {
-        height: calc(100vh - #{$base-header-height});
+        height: calc(100vh - #{variables.$base-header-height});
         padding: $line-width 0;
 
         > .right,
         > .left {
-            background-color: $color-active;
+            background-color: variables.$color-active;
 
             &.-image {
                 background-size: $background-size;

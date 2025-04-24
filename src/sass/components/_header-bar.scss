@@ -1,21 +1,19 @@
-/*
----
-name: Header Bar
-tag:
-  - components
-  - header
-  - header-bar
-category:
-  - components
-  - components/header-bar
-sourcePath: /components/_header-bar.scss
----
+// Header Bar
+//
+// Markup:
+// <div class="header-bar" style="position: relative">
+//
+//  </div>
+//
+// Style guide: components.header-bar
 
-*/
+@use "../meta/variables";
+@use "../meta/mixins";
+
 .header-bar {
     position: fixed;
-    height: $base-header-height;
-    background: $color-primary;
+    height: variables.$base-header-height;
+    background: variables.$color-primary;
     width: 100vw;
     top: 0;
     z-index: 100;
@@ -49,7 +47,7 @@ sourcePath: /components/_header-bar.scss
                     display: block;
                 }
 
-                @include media(">=large") {
+                @include mixins.mq-min("large") {
                     display: block;
 
                     &.-short {

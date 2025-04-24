@@ -1,26 +1,18 @@
-/*
----
-name: Forms
-tag:
-  - components
-  - form
-  - form-wrapper
-category:
-  - components
-  - components/form
-sourcePath: /components/_form-wrapper.scss
----
+// Form Wrapper
+//
+// Markup:
+// <div class="form-wrapper">
+//    <input type="text" value="lorem ipsum" />
+//    <input type="text" value="" />
+//    <textarea>Add a text here</textarea>
+//    <input type="submit" value="Abschicken" />
+//  </div>
+//
+// Style guide: components.form-wrapper
 
-```html
-<div class="form-wrapper">
-    <input type="text" value="lorem ipsum" />
-    <input type="text" value="" />
-    <textarea>Add a text here</textarea>
-    <input type="submit" value="Abschicken" />
-</div>
-```
+@use "../meta/variables";
+@use "../meta/mixins";
 
-*/
 $border-width: 5px;
 $padding-horizontal: 10px;
 $padding-vertical: 10px;
@@ -32,16 +24,16 @@ $padding-vertical: 10px;
     // stylelint-disable-next-line rscss/no-descendant-combinator
     legend,
     label { // stylelint-disable-line rscss/no-descendant-combinator
-        @include headline;
+        @include mixins.headline;
 
-        margin-bottom: $base-horizontal-margin / 4;
+        margin-bottom: variables.$base-horizontal-margin / 4;
         display: block;
-        font-size: $base-font-size-small;
+        font-size: variables.$base-font-size-small;
 
         &.-radio {
-            @include paragraph;
+            @include mixins.paragraph;
 
-            margin: $base-horizontal-margin / 2 0;
+            margin: variables.$base-horizontal-margin / 2 0;
             line-height: 18px;
         }
     }
@@ -57,14 +49,14 @@ $padding-vertical: 10px;
     textarea,
     select { // stylelint-disable-line rscss/no-descendant-combinator
         width: 100%;
-        border: $border-width solid $color-active;
+        border: $border-width solid variables.$color-active;
         padding: ($padding-horizontal + $border-width) ($padding-vertical + $border-width);
-        transition: padding $base-transition-speed linear, border $base-transition-speed linear;
-        margin-bottom: $base-horizontal-margin;
+        transition: padding variables.$base-transition-speed linear, border variables.$base-transition-speed linear;
+        margin-bottom: variables.$base-horizontal-margin;
 
         &:active,
         &:focus {
-            border-color: $color-primary;
+            border-color: variables.$color-primary;
             border-width: $border-width * 2;
             padding: $padding-horizontal $padding-vertical;
             outline: none;

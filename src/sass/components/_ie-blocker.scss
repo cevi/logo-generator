@@ -1,32 +1,20 @@
-/*
----
-name: IE Blocker
-tag:
-  - IE
-category:
-  - IE
-sourcePath: /components/_ie-blocker.scss
----
+@use "../meta/variables";
 
-```html
-```
-
-*/
 .ie-blocker {
     position: fixed;
     inset: 0;
     height: 100%;
     width: 100%;
     z-index: 9999999;
-    background-color: $color-active;
-    color: $color-active-contrast;
+    background-color: variables.$color-active;
+    color: variables.$color-active-contrast;
     display: none;
 
     > .content {
         margin: 80px 40px;
 
         > p > a {
-            color: $color-active-contrast;
+            color: variables.$color-active-contrast;
         }
     }
 }

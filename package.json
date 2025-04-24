@@ -4,7 +4,7 @@
   "description": "Logo Generator for Cevi Schweiz",
   "main": "js/App.js",
   "scripts": {
-    "build": "npm run clean && npm run lint && npm run sass && npm run js && npm run copy",
+    "build": "npm run clean && npm run lint && npm run sass && npm run js && npm run copy && npm run styleguide",
     "clean": "rm -rf assets",
     "copy": "node npm_run/copy.js",
     "js": "browserify src/js/App.js -o assets/js/scripts.js && npm run minify",
@@ -13,8 +13,9 @@
     "lint": "npm run sass-lint && npm run js-lint",
     "minify": "npm run minify-js && rm assets/js/scripts.js",
     "minify-js": "uglifyjs assets/js/scripts.js -c -m -o assets/js/scripts.min.js",
-    "sass-watch": "node-sass --watch src/sass -o assets/css",
-    "sass": "node-sass src/sass -o assets/css --output-style compressed",
+    "styleguide": "kss ./src/sass styleguide --css ../assets/css/styles.css",
+    "sass-watch": "sass --watch src/sass -o assets/css",
+    "sass": "sass src/sass:assets/css --style=compressed",
     "sass-lint": "stylelint src/sass",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "npm run js-watch sass-watch"
@@ -32,7 +33,7 @@
   "dependencies": {
     "canvg": "^3.0.10",
     "font-awesome": "^4.7.0",
-    "include-media": "^1.4.10",
+    "include-media": "^2.0.0",
     "jquery": "^3.6.1",
     "mq-scss": "^2.1.5",
     "normalize.css": "^7.0.0",
@@ -48,14 +49,15 @@
     "browserify-shim": "^3.8.15",
     "copyfiles": "^2.4.1",
     "deamdify": "^0.3.0",
-    "eslint": "^8.23.0",
+    "eslint": "^8.2.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.31.7",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "node-sass": "^9.0.0",
+    "kss": "^3.1.0",
     "postcss-scss": "^4.0.4",
+    "sass": "^1.8.0",
     "stylelint": "^15.6.0",
     "stylelint-config-standard": "^33.0.0",
     "stylelint-rscss": "^0.4.0",
@@ -85,5 +87,9 @@
       "browserify-shim",
       "deamdify"
     ]
+  },
+  "engines": {
+    "npm": ">=10.9.0 <11.0.0",
+    "node": ">=23.5.0 <24.0.0"
   }
 }

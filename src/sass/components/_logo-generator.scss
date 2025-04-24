@@ -1,13 +1,19 @@
-/*
----
-name: Logo Generator
----
-*/
+// Logo Generator
+//
+// Markup:
+// <div class="logo-generator">
+//
+//  </div>
+//
+// Style guide: components.logo-generator
+
+@use "../meta/variables";
+
 .logo-generator {
-    padding: $base-header-height + $page-padding $page-padding $page-padding;
+    padding: variables.$base-header-height + variables.$page-padding variables.$page-padding variables.$page-padding;
 
     &.-iframe {
-        padding-top: $page-padding;
+        padding-top: variables.$page-padding;
     }
 
     > h1 > small {
@@ -15,7 +21,7 @@ name: Logo Generator
     }
 
     > .userinputform {
-        padding: $page-padding 0;
+        padding: variables.$page-padding 0;
 
         > .userinputs {
             display: flex;
@@ -23,10 +29,10 @@ name: Logo Generator
 
             > .inputwrapper {
                 max-width: 45ch;
-                margin-right: $base-vertical-margin;
+                margin-right: variables.$base-vertical-margin;
             }
 
-            @include media("<1000px") {
+            @media (width < 1000px) {
                 flex-wrap: wrap;
 
                 > .inputwrapper {
@@ -37,10 +43,10 @@ name: Logo Generator
     }
 
     > .generatoroutput {
-        margin: $base-horizontal-margin $base-vertical-margin $base-horizontal-margin 0;
+        margin: variables.$base-horizontal-margin variables.$base-vertical-margin variables.$base-horizontal-margin 0;
         display: inline-block;
         height: 178px;
-        font-family: $base-headline-family;
+        font-family: variables.$base-headline-family;
         font-weight: 800;
         float: left;
 
@@ -48,7 +54,7 @@ name: Logo Generator
             max-height: 80px;
             display: block;
             background-color: #333;
-            border: 1px solid $color-active;
+            border: 1px solid variables.$color-active;
         }
 
         > .info {
@@ -61,7 +67,7 @@ name: Logo Generator
             text-decoration: none;
             color: white;
             text-indent: -9999px;
-            background-color: $color-active;
+            background-color: variables.$color-active;
             display: block;
             float: left;
             height: 40px;
@@ -86,7 +92,7 @@ name: Logo Generator
             > svg {
                 height: 100%;
                 width: auto;
-                border: 1px solid $color-active;
+                border: 1px solid variables.$color-active;
             }
         }
 
@@ -110,10 +116,10 @@ name: Logo Generator
     }
 
     > .testwrapper > .testoutput {
-        font-family: $base-headline-family;
+        font-family: variables.$base-headline-family;
         font-weight: 800;
         font-size: 110px;
-        color: $color-background;
+        color: variables.$color-background;
         white-space: nowrap;
     }
 
