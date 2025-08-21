@@ -2,6 +2,10 @@
 
 Was wurde in welcher Version angepasst.
 
+## 1.5.1
+
+- Admin-Seite: ungewollte Session-Trackings vermeiden & no-tracking-Funktion einbauen
+
 ## 1.5.0
 
 - Abstand bei zweizeiligen Logos vergrössern [#14](/../../issues/14)
