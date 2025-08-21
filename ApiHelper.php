@@ -55,6 +55,8 @@ class ApiHelper
     private $csv_filename_claim = 'csv/claim_entries.csv';
     private $csv_filename_share = 'csv/share_entries.csv';
     private $csv_separator = ';';
+    private $csv_enclosure = "\"";
+    private $csv_escape = '\\';
     // timeout for the api: 30 minutes (1800 seconds)
     private $timeout = 1800;
 
@@ -294,7 +296,7 @@ class ApiHelper
             $time
         );
         $file = new SplFileObject($this->csv_filename_session, 'a');
-        $file->fputcsv($entry, $this->csv_separator);
+        $file->fputcsv($entry, $this->csv_separator, $this->csv_enclosure, $this->csv_escape);
         $file = null;
     }
 

@@ -31,8 +31,12 @@
     $claim['right'] = ' ERLEBEN.';
     $color = 'web';
 
-    $api_helper = new ApiHelper();
-    $id = $api_helper->getNewSessionId();
+    if (isset($_GET['notracking'])) {
+        $id = null;
+    } else {
+        $api_helper = new ApiHelper();
+        $id = $api_helper->getNewSessionId();
+    }
 
     foreach (array_keys($input_logo) as $key) {
         if (isset($_GET['logo-' . $key])) {
@@ -125,7 +129,7 @@
             <div class="info">
                 PNG Logo
             </div>
-            <img src="#" alt="Logo Ausgabe im Format PNG" id="png-logo-output"/>
+            <img src="/assets/images/output-start-logo.png" alt="Logo Ausgabe im Format PNG" id="png-logo-output"/>
             <div class="linkwrapper">
                 <a class="link" href="#" target="_blank" id="png-logo-link" download="logo.png">Download PNG Logo</a>
                 <a class="link -share js-share-link" href="#" target="_blank">Share PNG Logo</a>
@@ -136,7 +140,7 @@
             <div class="info">
                 JPG Logo
             </div>
-            <img src="#" alt="Logo Ausgabe im Format JPG" id="jpg-logo-output"/>
+            <img src="/assets/images/output-start-logo.jpg" alt="Logo Ausgabe im Format JPG" id="jpg-logo-output"/>
             <div class="linkwrapper">
                 <a class="link" href="#" target="_blank" id="jpg-logo-link" download="logo.jpg">Download JPG Logo</a>
                 <a class="link -share js-share-link" href="#" target="_blank">Share JPG Logo</a>
@@ -160,7 +164,7 @@
             <div class="info">
                 PNG Claim (teilweise transparent)
             </div>
-            <img src="#" alt="Claim Ausgabe im Format PNG" id="png-claim-output"/>
+            <img src="/assets/images/output-start-logo.png" alt="Claim Ausgabe im Format PNG" id="png-claim-output"/>
             <div class="linkwrapper">
                 <a class="link" href="#" target="_blank" id="png-claim-link" download="claim.png">Download PNG Claim</a>
                 <a class="link -share js-share-link" href="#" target="_blank">Share PNG Claim</a>
@@ -193,6 +197,14 @@
     </script>
 
     <script src="assets/js/scripts.min.js?v<?php echo $version; ?>"></script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        console.log("Seite geladen:", window.location.href);
+    });
+</script>
+
 </body>
 
 </html>
