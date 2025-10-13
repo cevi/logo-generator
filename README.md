@@ -75,22 +75,26 @@ $ npm run build
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/btemperli"><img src="https://avatars.githubusercontent.com/u/3005632?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Beat Temperli</b></sub></a><br /><a href="https://github.com/cevi/logo-generator/commits?author=btemperli" title="Code">💻</a> <a href="https://github.com/cevi/logo-generator/commits?author=btemperli" title="Documentation">📖</a> <a href="https://github.com/cevi/logo-generator/issues?q=author%3Abtemperli" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/cevi/logo-generator/issues?q=author%3Abtemperli" title="Maintenance">🚧</a></td>
-    <td align="center"><a href="https://github.com/wp99cp"><img src="https://avatars.githubusercontent.com/u/34008738?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Cyrill Püntener</b></sub></a><br /><a href="https://github.com/cevi/logo-generator/issues?q=author%3Awp99cp" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/cevi/logo-generator/issues?q=author%3Awp99cp" title="Reported a bug">🐛</a></td>
+    <td align="center">
+        <a href="https://github.com/btemperli">
+            <img src="https://avatars.githubusercontent.com/u/3005632?v=4?s=100" width="100px;" alt=""/>
+            <br />
+            <sub><b>Beat Temperli</b></sub>
+        </a>
+        <br />
+        <a href="https://github.com/cevi/logo-generator/commits?author=btemperli" title="Code">💻</a> <a href="https://github.com/cevi/logo-generator/commits?author=btemperli" title="Documentation">📖</a> <a href="https://github.com/cevi/logo-generator/issues?q=author%3Abtemperli" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/cevi/logo-generator/issues?q=author%3Abtemperli" title="Maintenance">🚧</a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/wp99cp">
+            <img src="https://avatars.githubusercontent.com/u/34008738?v=4?s=100" width="100px;" alt=""/>
+            <br />
+            <sub><b>Cyrill Püntener</b></sub>
+        </a>
+        <br />
+        <a href="https://github.com/cevi/logo-generator/issues?q=author%3Awp99cp" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/cevi/logo-generator/issues?q=author%3Awp99cp" title="Reported a bug">🐛</a>
+    </td>
   </tr>
 </table>
 
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-<!-- Updating Contributors -->
-<!-- How to add new contributors: `./node_modules/.bin/all-contributors add github-user code,doc,maintenance,ideas,error` -->
-<!-- How to refresh the current list: `./node_modules/.bin/all-contributors generate` -->
-<!-- see more: https://allcontributors.org/docs/en/cli/overview -->
